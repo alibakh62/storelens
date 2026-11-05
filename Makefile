@@ -4,7 +4,7 @@ UVICORN ?= uv run uvicorn
 PORT    ?= 8000
 export STORELENS_PACING ?= 1
 
-.PHONY: setup data dev backend frontend test eval record demo preflight screenshots backup-video deck demo-script all-demo-assets build stop
+.PHONY: llm-check setup data dev backend frontend test eval record demo preflight screenshots backup-video deck demo-script all-demo-assets build stop
 
 setup:            ## install Python + JS deps
 	uv sync --extra dev --extra llm
@@ -31,6 +31,9 @@ test:             ## unit + agent + API tests (template mode)
 eval:             ## golden-set eval -> eval/out/report.md + summary.json
 	$(PY) eval/run_eval.py --mode template
 	-$(PY) eval/run_eval.py --mode live
+
+llm-check:        ## one real round-trip (text + tool call) to the configured live LLM
+	$(PY) scripts/llm_check.py
 
 record:           ## live provider (or template) -> replay cache for every demo question × persona
 	$(PY) scripts/record_replay.py

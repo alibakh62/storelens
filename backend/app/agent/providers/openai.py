@@ -27,12 +27,24 @@ def _convert(messages):
 class OpenAIProvider:
     name = "openai"
 
-    def __init__(self, model: str | None = None, azure: bool = False):
+    def __init__(self, model: str | None = None, azure: bool = False, databricks: bool = False):
         try:
             import openai
         except ImportError as e:
             raise ProviderUnavailable("openai SDK not installed") from e
-        if azure:
+        if databricks:
+            host = (os.getenv("DATABRICKS_HOST") or "").rstrip("/")
+            key = os.getenv("DATABRICKS_TOKEN") or api_key()
+            if not (host and key):
+                raise ProviderUnavailable("DATABRICKS_HOST / DATABRICKS_TOKEN missing")
+            if not host.startswith("http"):
+                host = "https://" + host
+            # Databricks Foundation Model APIs / Model Serving are OpenAI-compatible at <workspace>/serving-endpoints
+            self.client = openai.OpenAI(base_url=f"{host}/serving-endpoints", api_key=key)
+            self.name = "databricks"
+            if not model:
+                raise ProviderUnavailable("set llm.model to the Databricks serving endpoint name")
+        elif azure:
             ep = os.getenv("AZURE_OPENAI_ENDPOINT")
             key = api_key("AZURE_OPENAI_API_KEY")
             if not (ep and key):

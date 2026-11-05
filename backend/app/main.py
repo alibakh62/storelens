@@ -296,7 +296,7 @@ class ChatReq(BaseModel):
 @app.post("/api/chat")
 async def chat(req: ChatReq, scope: Scope = Depends(scope_dep)):
     q: queue.Queue = queue.Queue()
-    mode = req.mode if req.mode in ("template", "replay", "anthropic", "openai", "azure_openai", "bedrock") else None
+    mode = req.mode if req.mode in ("template", "replay", "anthropic", "openai", "azure_openai", "bedrock", "databricks") else None
 
     def work():
         try:

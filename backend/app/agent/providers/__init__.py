@@ -25,6 +25,9 @@ def live_provider(name: str | None = None):
         elif name == "azure_openai":
             from .azure_openai import AzureOpenAIProvider
             p = AzureOpenAIProvider(model)
+        elif name == "databricks":
+            from .databricks import DatabricksProvider
+            p = DatabricksProvider(model)
         elif name == "bedrock":
             from .bedrock import BedrockProvider
             p = BedrockProvider(model)

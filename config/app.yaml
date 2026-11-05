@@ -1,8 +1,8 @@
 clock: {mode: running}             # frozen | running
 llm:
-  provider: replay                 # anthropic | azure_openai | openai | bedrock | replay | template
+  provider: replay                 # anthropic | azure_openai | openai | bedrock | databricks | replay | template
   fallback_chain: [replay, template]
-  model: ""                        # set to the approved model id
+  model: ""                        # set to the approved model id (Databricks: the serving endpoint name)
   temperature: 0
   timeout_s: 12
   max_tool_rounds: 6
