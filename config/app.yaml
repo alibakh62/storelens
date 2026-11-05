@@ -1,8 +1,8 @@
 clock: {mode: running}             # frozen | running
 llm:
-  provider: replay                 # anthropic | azure_openai | openai | bedrock | databricks | replay | template
+  provider: replay                 # gateway | anthropic | azure_openai | openai | bedrock | databricks | replay | template
   fallback_chain: [replay, template]
-  model: ""                        # set to the approved model id (Databricks: the serving endpoint name)
+  model: ""                        # set to the approved model id (gateway: leave "" to use $GATEWAY_MODEL)
   temperature: 0
   timeout_s: 12
   max_tool_rounds: 6

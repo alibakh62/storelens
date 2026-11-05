@@ -27,12 +27,28 @@ def _convert(messages):
 class OpenAIProvider:
     name = "openai"
 
-    def __init__(self, model: str | None = None, azure: bool = False, databricks: bool = False):
+    def __init__(self, model: str | None = None, azure: bool = False, databricks: bool = False, gateway: bool = False):
         try:
             import openai
         except ImportError as e:
             raise ProviderUnavailable("openai SDK not installed") from e
-        if databricks:
+        if gateway:
+            # Corporate AI gateway (OpenAI-compatible): GATEWAY_BASE_URL, GATEWAY_API_KEY, GATEWAY_MODEL
+            base = os.getenv("GATEWAY_BASE_URL")
+            key = os.getenv("GATEWAY_API_KEY") or api_key()
+            model = model or os.getenv("GATEWAY_MODEL")
+            if not (base and key and model):
+                raise ProviderUnavailable("GATEWAY_BASE_URL / GATEWAY_API_KEY / GATEWAY_MODEL (or llm.model) missing")
+            kw = {}
+            ca = os.getenv("GATEWAY_CA_BUNDLE")  # internal CA chain, for CERTIFICATE_VERIFY_FAILED errors
+            if ca:
+                import ssl
+
+                import httpx
+                kw["http_client"] = httpx.Client(verify=ssl.create_default_context(cafile=ca))
+            self.client = openai.OpenAI(base_url=base.rstrip("/"), api_key=key, **kw)
+            self.name = "gateway"
+        elif databricks:
             host = (os.getenv("DATABRICKS_HOST") or "").rstrip("/")
             key = os.getenv("DATABRICKS_TOKEN") or api_key()
             if not (host and key):
@@ -59,11 +75,26 @@ class OpenAIProvider:
             self.client = openai.OpenAI(api_key=key)
         self.model = model or os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4o")
 
+    _no_temperature = False
+
+    def _create(self, **kw):
+        """Some newer models reject a non-default temperature: retry once without it and remember."""
+        if self._no_temperature:
+            kw.pop("temperature", None)
+        try:
+            return self.client.chat.completions.create(**kw)
+        except Exception as e:  # noqa: BLE001
+            if "temperature" in str(e).lower() and "temperature" in kw:
+                self._no_temperature = True
+                kw.pop("temperature")
+                return self.client.chat.completions.create(**kw)
+            raise
+
     def chat(self, messages, tools, *, temperature=0, timeout_s=12, stream=False):
         tl = [{"type": "function", "function": {"name": t["name"], "description": t["description"],
                                                 "parameters": t["parameters"]}} for t in tools]
         try:
-            resp = self.client.chat.completions.create(model=self.model, messages=_convert(messages), tools=tl,
+            resp = self._create(model=self.model, messages=_convert(messages), tools=tl,
                                                        temperature=temperature, timeout=timeout_s)
         except Exception as e:  # noqa: BLE001
             yield {"type": "error", "error": f"{type(e).__name__}: {e}"}
@@ -81,7 +112,7 @@ class OpenAIProvider:
         yield {"type": "done", "usage": {"in": getattr(u, "prompt_tokens", 0), "out": getattr(u, "completion_tokens", 0)}}
 
     def complete(self, system: str, user: str, timeout_s: float = 12) -> str:
-        resp = self.client.chat.completions.create(model=self.model, temperature=0, timeout=timeout_s,
+        resp = self._create(model=self.model, temperature=0, timeout=timeout_s,
                                                    messages=[{"role": "system", "content": system},
                                                              {"role": "user", "content": user}])
         return resp.choices[0].message.content or ""

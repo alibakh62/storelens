@@ -12,7 +12,7 @@ AI layer over ServiceNow-style data: store health, stitched parent/child timelin
 cause, change correlation with rollout evidence, "which fix holds", $ impact, role-aware cited answers.
 **AI decides what to look at and how to say it; deterministic code computes every number.**
 
-- Live LLM: set `llm.provider` in `config/app.yaml` (`anthropic` | `openai` | `azure_openai` | `bedrock` | `databricks` — see `docs/llm_databricks.md`) and
+- Live LLM: set `llm.provider` in `config/app.yaml` (`gateway` for the hackathon AI gateway — see `docs/llm_gateway.md`; also `anthropic` | `openai` | `azure_openai` | `bedrock` | `databricks`) and
   `LLM_API_KEY` (or the provider's own env var). Then `make record` to refresh the replay cache.
 - Personas: switch in the top-right; RBAC/masking is enforced in the data layer (`backend/app/rbac.py`).
 - Demo script: `demo/demo_script.md` (`make demo-script` refreshes the numbers). Q&A prep: `demo/qa_prep.md`.

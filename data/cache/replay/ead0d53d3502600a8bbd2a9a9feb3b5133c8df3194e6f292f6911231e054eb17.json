@@ -3,83 +3,40 @@
  "persona": "engineer",
  "store_id": 34512,
  "incident_number": null,
- "recorded_from": "template",
+ "recorded_from": "gateway",
  "calls": [
   {
    "name": "detect_blast_radius",
    "args": {
     "number": "INC0039096"
    }
-  },
-  {
-   "name": "estimate_impact",
-   "args": {
-    "number": "INC0039143"
-   }
   }
  ],
  "answer": {
-  "headline": "54 stores affected \u2014 likely common cause: Spectrum Business (lift 2.6\u00d7)",
+  "headline": "54 stores affected by the Spectrum Business outage",
   "status": "critical",
   "bullets": [
    {
-    "text": "Likely cause: 54 of 54 affected stores (100%) are on Spectrum Business vs 39% of stores in these markets (lift 2.6\u00d7).",
-    "citations": [
-     "INC0039096",
-     "INC0039143"
-    ]
-   },
-   {
-    "text": "Unusual: 54 connectivity tickets in the window vs 2.0 expected for this weekday/hour (Poisson p < 0.01).",
-    "citations": [
-     "INC0039096"
-    ]
-   },
-   {
-    "text": "7 offline, 47 degraded across Dallas, Fort Worth, Plano; max radius 52 km from the centroid.",
+    "text": "54 of 54 affected stores are on Spectrum Business (lift 2.6\u00d7).",
     "citations": [
      "INC0039143"
     ]
    },
    {
-    "text": "All linked under parent INC0039143 (58 child tickets); 0 unlinked look-alikes to review.",
-    "citations": [
-     "INC0039143"
-    ]
-   },
-   {
-    "text": "Also over-represented: circuit type Broadband Cable (85% vs 41%) \u2014 consistent with the same provider.",
-    "citations": [
-     "INC0039096"
-    ]
-   }
-  ],
-  "impact": {
-   "usd_so_far": null,
-   "per_hour_now": null,
-   "as_of": "2026-11-04T18:00:03.847802587",
-   "restricted": true,
-   "scope": "major"
-  },
-  "recommended_actions": [
-   {
-    "text": "Keep child tickets linked to INC0039143; link the look-alikes if they match.",
-    "owner": "Major Incident Management",
+    "text": "Invented 999 stores elsewhere.",
     "citations": [
      "INC0039143"
     ]
    }
   ],
+  "confidence": "high",
   "panels": [
    "blast"
   ],
   "sections": [],
-  "followups": [
-   "What fixed this last time?",
-   "Did anything change here recently?",
-   "How much is this costing us?"
-  ],
-  "confidence": "high"
+  "recommended_actions": [],
+  "followups": [],
+  "impact": null
  },
  "tool_results": [
   {
@@ -93,7 +50,7 @@
    "banner": "7-Eleven",
    "utc_offset_std": -6,
    "timezone": "America/Chicago",
-   "as_of": "2026-11-04T18:00:03.803316606",
+   "as_of": "2026-11-04T18:00:00",
    "health_score": 22,
    "band": "Critical",
    "score_breakdown": [
@@ -1277,65 +1234,7 @@
     "INC0039112"
    ],
    "restricted": true
-  },
-  {
-   "number": "INC0039143",
-   "major": true,
-   "usd": null,
-   "usd_so_far": null,
-   "per_hour_now": null,
-   "by_stream": {
-    "inside": 3463.88,
-    "fuel": 5694.95,
-    "sevennow": 422.74,
-    "lottery": 648.53,
-    "ev": 12.41
-   },
-   "stores": 54,
-   "as_of": "2026-11-04T18:00:03.847802587",
-   "top_stores": [
-    {
-     "store_id": 34512,
-     "usd": null,
-     "incident_number": "INC0039096",
-     "restricted": true
-    },
-    {
-     "store_id": 98772,
-     "usd": null,
-     "incident_number": "INC0039138",
-     "restricted": true
-    },
-    {
-     "store_id": 90612,
-     "usd": null,
-     "incident_number": "INC0039104",
-     "restricted": true
-    },
-    {
-     "store_id": 58648,
-     "usd": null,
-     "incident_number": "INC0039115",
-     "restricted": true
-    },
-    {
-     "store_id": 11101,
-     "usd": null,
-     "incident_number": "INC0039132",
-     "restricted": true
-    }
-   ],
-   "footnote": "Estimate: hourly sales baseline \u00d7 service loss profile. Gross sales, not margin.",
-   "citations": [
-    "INC0039143",
-    "INC0039096",
-    "INC0039138",
-    "INC0039104",
-    "INC0039115",
-    "INC0039132"
-   ],
-   "restricted": true
   }
  ],
- "recorded_at_mock": "2026-11-04T18:00:04.135541631"
+ "recorded_at_mock": "2026-11-04T18:00:00"
 }
