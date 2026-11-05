@@ -1,8 +1,8 @@
 clock: {mode: running}             # frozen | running
 llm:
-  provider: replay                 # gateway | anthropic | azure_openai | openai | bedrock | databricks | replay | template
+  provider: gateway                 # gateway | anthropic | azure_openai | openai | bedrock | databricks | replay | template
   fallback_chain: [replay, template]
-  model: ""                        # set to the approved model id (gateway: leave "" to use $GATEWAY_MODEL)
+  model: "7ai-azure-foundry-gpt-6.1-sol"                        # set to the approved model id (gateway: leave "" to use $GATEWAY_MODEL)
   temperature: 0
   timeout_s: 12
   max_tool_rounds: 6
