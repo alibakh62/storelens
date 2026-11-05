@@ -6,7 +6,7 @@ llm:
   temperature: 0
   api: ""                          # chat | responses; "" = chat, auto-switching to /v1/responses when the gateway requires it
   reasoning_effort: ""             # "" = model default; low | medium | high (Responses API) — "none" only where the model accepts it
-  timeout_s: 12
+  timeout_s: 45                    # reasoning models with tools often need > 12s per round
   max_tool_rounds: 6
   record_on_live: true             # live answers also written to replay cache
 display_tz: America/Chicago

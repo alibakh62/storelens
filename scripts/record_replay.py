@@ -12,6 +12,8 @@ import yaml
 ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "backend"))
 os.environ.setdefault("STORELENS_PACING", "0")
+# record at the demo's start time (mock now), so recorded $ figures match the banner when the demo starts
+os.environ["STORELENS_CLOCK"] = "frozen"
 
 from app.agent.orchestrator import ask  # noqa: E402
 from app.agent.providers import chain, live_provider  # noqa: E402
@@ -32,7 +34,7 @@ def main():
     spec = yaml.safe_load((ROOT / "demo" / "questions.yaml").read_text())
     live = next((n for n in chain() if n not in ("replay", "template") and live_provider(n)), None)
     mode = live or "template"
-    n = 0
+    n, fell = 0, []
     for who, uid in default_personas().items():
         scope = scope_for(uid)
         for q in spec["questions"]:
@@ -40,9 +42,14 @@ def main():
             for inc in contexts(q, store):
                 r = ask(q["text"], scope, store_id=store, incident_number=inc, force_mode=mode, record=True)
                 n += 1
+                why = r.get("trace", {}).get("fallback_reason")
+                if r["mode"] != mode:
+                    fell.append((who, q["id"], inc, why))
                 print(f"[{who}] {q['id']:<12} inc={inc or '-':<11} mode={r['mode']:<9} removed={r['validation'].get('removed_count', 0)}"
                       f"  {r['answer']['headline'][:70]}")
-    print(f"recorded {n} turns from {mode}")
+    print(f"recorded {n} turns: {n - len(fell)} from {mode}, {len(fell)} fell back to template")
+    for who, qid, inc, why in fell:
+        print(f"  fallback [{who}] {qid} inc={inc or '-'}: {str(why)[:160]}")
 
 
 if __name__ == "__main__":

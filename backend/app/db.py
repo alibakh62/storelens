@@ -5,6 +5,7 @@ frames as tables plus the curated views of SPEC §4.5; NLQ uses per-request scop
 """
 from __future__ import annotations
 
+import atexit
 import json
 import re
 import threading
@@ -150,6 +151,7 @@ def load() -> Data:
     inc = inc.sort_values("opened_at").reset_index(drop=True)
 
     con = duckdb.connect(":memory:")
+    atexit.register(con.close)
     data = Data(manifest=manifest, clock=clock, stores=stores, network=network, cmdb=cmdb, incident=inc, notes=notes,
                 change=change, change_map=change_map, problem=problem, kb=kb, baseline=baseline, profile=profile,
                 users=users, groups=groups, sla=sla, con=con)

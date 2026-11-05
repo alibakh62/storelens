@@ -201,11 +201,16 @@ class Turn:
                     prov = live_provider(mode)
                     if prov is None:
                         continue
-                    answer, rep = yield from self._live(prov)
+                    try:
+                        answer, rep = yield from self._live(prov)
+                    except _Fallback:
+                        raise
+                    except Exception as e:  # noqa: BLE001
+                        raise _Fallback(f"{type(e).__name__}: {e}")
                 mode_used = mode
                 break
             except _Fallback as e:
-                err = str(e)
+                err = f"{mode}: {e}"
                 continue
         if answer is None:
             answer, rep = yield from self._template()
@@ -239,10 +244,13 @@ class Turn:
         intent = templates.intent_of(self.q, self.ctx.get("store_id") is not None)
         self.intent = intent
         calls = templates.plan(intent, self.ctx, self.q, self.scope.persona, self.scope)
-        todo = [(n, a, f"t{i}") for i, (n, a) in enumerate(calls) if n not in self.results_by_name]
+        # run this plan's own calls (a failed live attempt may have left results with other arguments behind)
+        todo = [(n, a, f"t{i}") for i, (n, a) in enumerate(calls) if n != "get_store_health"]
+        mine = {"get_store_health": self.results_by_name["get_store_health"]} if "get_store_health" in self.results_by_name else {}
         if todo:
             yield from self.run_tools_parallel(todo)
-        raw = templates.render(intent, self.ctx, self.results_by_name, self.scope.persona, self.scope, self.q)
+            mine.update({name: res for _, name, res in self._par})
+        raw = templates.render(intent, self.ctx, mine, self.scope.persona, self.scope, self.q)
         raw = _normalize(raw)
         self.raw_answer = raw
         ans, rep = validate(raw, self.tool_results, self.scope, tools_called=set(self.results_by_name))
