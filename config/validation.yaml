@@ -1,0 +1,8 @@
+# Filled by the team after the §17 time trial. null values render as red [TBD] in the deck.
+participants:
+  - {role: "NOC engineer", before_min: null, after_sec: null, tickets_opened: null, tools_used: null}
+  - {role: "TSC lead", before_min: null, after_sec: null, tickets_opened: null, tools_used: null}
+  - {role: "Prod Support analyst", before_min: null, after_sec: null, tickets_opened: null, tools_used: null}
+quotes:
+  - {role: "TSC lead", text: null, permission: false}
+  - {role: "Regional ops manager", text: null, permission: false}

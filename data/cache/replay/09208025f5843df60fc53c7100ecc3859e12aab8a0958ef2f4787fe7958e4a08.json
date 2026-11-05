@@ -1,0 +1,813 @@
+{
+ "question": "Shift handoff for Texas",
+ "persona": "manager",
+ "store_id": null,
+ "incident_number": null,
+ "recorded_from": "template",
+ "calls": [
+  {
+   "name": "get_shift_handoff",
+   "args": {
+    "region": "Texas"
+   }
+  }
+ ],
+ "answer": {
+  "headline": "Shift handoff \u2014 Texas",
+  "status": "watch",
+  "bullets": [
+   {
+    "text": "MAJOR INC0039143: MAJOR: Spectrum Business outage - Dallas, Plano, Fort Worth stores on LTE backup / offline \u2014 54 stores, $10.3k so far.",
+    "citations": [
+     "INC0039143"
+    ]
+   },
+   {
+    "text": "11 P1/P2 open, 3 at SLA risk, 5 on hold > 24h, 79 open store incidents in total.",
+    "citations": [
+     "INC0039096",
+     "INC0039104",
+     "INC0039105"
+    ],
+    "sources": [
+     "get_shift_handoff"
+    ]
+   },
+   {
+    "text": "Next 24h: 1 scheduled change(s), first CHG0030840 Price book service deployment 2026.26 at 3:00 AM CT.",
+    "citations": [
+     "CHG0030840"
+    ]
+   },
+   {
+    "text": "9 chronic devices failed again this week (top: store 34512, S34512-DISP-03).",
+    "citations": [
+     "PRB0040006"
+    ]
+   }
+  ],
+  "sections": [
+   {
+    "title": "SLA at risk",
+    "bullets": [
+     {
+      "text": "INC0039096 store 34512: STORE DOWN: 34512 unreachable, registers in offline mode \u2014 SLA due 1:55 PM CT.",
+      "citations": [
+       "INC0039096"
+      ]
+     },
+     {
+      "text": "INC0039104 store 90612: Store 90612 hard down - cannot process cards \u2014 SLA due 1:59 PM CT.",
+      "citations": [
+       "INC0039104"
+      ]
+     },
+     {
+      "text": "INC0039105 store 64888: Store 64888 hard down - cannot process cards \u2014 SLA due 1:59 PM CT.",
+      "citations": [
+       "INC0039105"
+      ]
+     }
+    ]
+   }
+  ],
+  "panels": [
+   "handoff"
+  ],
+  "recommended_actions": [],
+  "followups": [
+   "Is this affecting other stores?",
+   "Which of my stores are at SLA risk?",
+   "How much is this costing us?"
+  ],
+  "confidence": "high",
+  "impact": null
+ },
+ "tool_results": [
+  {
+   "region": "Texas",
+   "as_of": "2026-11-04T18:00:26.768176829",
+   "sections": {
+    "majors": [
+     {
+      "number": "INC0039143",
+      "short_description": "MAJOR: Spectrum Business outage - Dallas, Plano, Fort Worth stores on LTE backup / offline",
+      "state": "In Progress",
+      "opened_at": "2026-11-04T16:21:55",
+      "stores": 54,
+      "usd_so_far": 10283.33,
+      "per_hour_now": 6401.05,
+      "stores_in_region": 54
+     }
+    ],
+    "p1_p2_open": [
+     {
+      "number": "INC0039096",
+      "store_id": 34512,
+      "priority": "1 - Critical",
+      "short_description": "STORE DOWN: 34512 unreachable, registers in offline mode",
+      "state": "In Progress",
+      "assignment_group": "Network Operations",
+      "opened_at": "2026-11-04T15:55:03",
+      "age_h": 2.1,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-04T19:55:03",
+       "remaining_h": 1.91
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 2656.94,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0039104",
+      "store_id": 90612,
+      "priority": "1 - Critical",
+      "short_description": "Store 90612 hard down - cannot process cards",
+      "state": "On Hold",
+      "assignment_group": "Network Operations",
+      "opened_at": "2026-11-04T15:59:00",
+      "age_h": 2.0,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-04T19:59:00",
+       "remaining_h": 1.98
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 1666.31,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0039105",
+      "store_id": 64888,
+      "priority": "1 - Critical",
+      "short_description": "Store 64888 hard down - cannot process cards",
+      "state": "On Hold",
+      "assignment_group": "Network Operations",
+      "opened_at": "2026-11-04T15:59:12",
+      "age_h": 2.0,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-04T19:59:12",
+       "remaining_h": 1.98
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 281.24,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0039115",
+      "store_id": 58648,
+      "priority": "1 - Critical",
+      "short_description": "Store 58648 completely offline - no primary or LTE",
+      "state": "On Hold",
+      "assignment_group": "Network Operations",
+      "opened_at": "2026-11-04T16:07:38",
+      "age_h": 1.9,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-04T20:07:38",
+       "remaining_h": 2.12
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 875.97,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0039126",
+      "store_id": 55752,
+      "priority": "1 - Critical",
+      "short_description": "STORE DOWN: 55752 unreachable, registers in offline mode",
+      "state": "On Hold",
+      "assignment_group": "Network Operations",
+      "opened_at": "2026-11-04T16:12:55",
+      "age_h": 1.8,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-04T20:12:55",
+       "remaining_h": 2.21
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 334.49,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0039132",
+      "store_id": 11101,
+      "priority": "1 - Critical",
+      "short_description": "Store 11101 completely offline - no primary or LTE",
+      "state": "On Hold",
+      "assignment_group": "Network Operations",
+      "opened_at": "2026-11-04T16:15:11",
+      "age_h": 1.8,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-04T20:15:11",
+       "remaining_h": 2.25
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 425.07,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0039138",
+      "store_id": 98772,
+      "priority": "1 - Critical",
+      "short_description": "STORE DOWN: 98772 unreachable, registers in offline mode",
+      "state": "In Progress",
+      "assignment_group": "Network Operations",
+      "opened_at": "2026-11-04T16:18:48",
+      "age_h": 1.7,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-04T20:18:48",
+       "remaining_h": 2.31
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 2416.98,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0039129",
+      "store_id": 90612,
+      "priority": "2 - High",
+      "short_description": "Cards declining 'host unavailable' at store 90612",
+      "state": "In Progress",
+      "assignment_group": "Payments Engineering",
+      "opened_at": "2026-11-04T16:14:50",
+      "age_h": 1.8,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-05T00:14:50",
+       "remaining_h": 6.24
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 1448.55,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0039136",
+      "store_id": 64888,
+      "priority": "2 - High",
+      "short_description": "Cards declining 'host unavailable' at store 64888",
+      "state": "In Progress",
+      "assignment_group": "Payments Engineering",
+      "opened_at": "2026-11-04T16:18:13",
+      "age_h": 1.7,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-05T00:18:13",
+       "remaining_h": 6.3
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 188.01,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0039137",
+      "store_id": 34512,
+      "priority": "2 - High",
+      "short_description": "Cards declining 'host unavailable' at store 34512",
+      "state": "In Progress",
+      "assignment_group": "Payments Engineering",
+      "opened_at": "2026-11-04T16:18:33",
+      "age_h": 1.7,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-05T00:18:33",
+       "remaining_h": 6.3
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 2060.67,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0039155",
+      "store_id": 55752,
+      "priority": "2 - High",
+      "short_description": "Cards declining 'host unavailable' at store 55752",
+      "state": "In Progress",
+      "assignment_group": "Payments Engineering",
+      "opened_at": "2026-11-04T16:33:25",
+      "age_h": 1.5,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-05T00:33:25",
+       "remaining_h": 6.55
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 205.44,
+      "region": "Texas"
+     }
+    ],
+    "p1_p2_open_count": 11,
+    "sla_risk": [
+     {
+      "number": "INC0039096",
+      "store_id": 34512,
+      "priority": "1 - Critical",
+      "short_description": "STORE DOWN: 34512 unreachable, registers in offline mode",
+      "state": "In Progress",
+      "assignment_group": "Network Operations",
+      "opened_at": "2026-11-04T15:55:03",
+      "age_h": 2.1,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-04T19:55:03",
+       "remaining_h": 1.91
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 2656.94,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0039104",
+      "store_id": 90612,
+      "priority": "1 - Critical",
+      "short_description": "Store 90612 hard down - cannot process cards",
+      "state": "On Hold",
+      "assignment_group": "Network Operations",
+      "opened_at": "2026-11-04T15:59:00",
+      "age_h": 2.0,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-04T19:59:00",
+       "remaining_h": 1.98
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 1666.31,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0039105",
+      "store_id": 64888,
+      "priority": "1 - Critical",
+      "short_description": "Store 64888 hard down - cannot process cards",
+      "state": "On Hold",
+      "assignment_group": "Network Operations",
+      "opened_at": "2026-11-04T15:59:12",
+      "age_h": 2.0,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-04T19:59:12",
+       "remaining_h": 1.98
+      },
+      "parent_incident": "INC0039143",
+      "est_impact_usd": 281.24,
+      "region": "Texas"
+     }
+    ],
+    "sla_risk_count": 3,
+    "on_hold_24h": [
+     {
+      "number": "INC0038922",
+      "store_id": 78949,
+      "priority": "4 - Low",
+      "short_description": "Pay at pump not working on dispenser 9",
+      "state": "On Hold",
+      "assignment_group": "Fuel Systems Support",
+      "opened_at": "2026-11-02T07:47:11",
+      "age_h": 58.2,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-07T07:47:11",
+       "remaining_h": 61.78
+      },
+      "parent_incident": null,
+      "est_impact_usd": 3913.64,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0038928",
+      "store_id": 87282,
+      "priority": "4 - Low",
+      "short_description": "Pay at pump not working on dispenser 1",
+      "state": "On Hold",
+      "assignment_group": "Fuel Systems Support",
+      "opened_at": "2026-11-02T13:46:57",
+      "age_h": 52.2,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-07T13:46:57",
+       "remaining_h": 67.78
+      },
+      "parent_incident": null,
+      "est_impact_usd": 2508.9,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0038930",
+      "store_id": 68251,
+      "priority": "4 - Low",
+      "short_description": "High latency / packet loss at store 68251",
+      "state": "On Hold",
+      "assignment_group": "Network Operations",
+      "opened_at": "2026-11-02T13:50:42",
+      "age_h": 52.2,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-07T13:50:42",
+       "remaining_h": 67.84
+      },
+      "parent_incident": null,
+      "est_impact_usd": 565.3,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0038944",
+      "store_id": 34512,
+      "priority": "4 - Low",
+      "short_description": "Dispenser 3 not taking cards at store 34512",
+      "state": "On Hold",
+      "assignment_group": "Fuel Systems Support",
+      "opened_at": "2026-11-02T16:00:00",
+      "age_h": 50.0,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-07T16:00:00",
+       "remaining_h": 69.99
+      },
+      "parent_incident": null,
+      "est_impact_usd": 5788.11,
+      "region": "Texas"
+     },
+     {
+      "number": "INC0038955",
+      "store_id": 23674,
+      "priority": "4 - Low",
+      "short_description": "Dispenser 2 not taking cards at store 23674",
+      "state": "On Hold",
+      "assignment_group": "Fuel Systems Support",
+      "opened_at": "2026-11-02T19:02:38",
+      "age_h": 47.0,
+      "sla": {
+       "status": "ok",
+       "due": "2026-11-07T19:02:38",
+       "remaining_h": 73.04
+      },
+      "parent_incident": null,
+      "est_impact_usd": 4210.19,
+      "region": "Texas"
+     }
+    ],
+    "on_hold_24h_count": 5,
+    "new_chronic": [
+     {
+      "store_id": 34512,
+      "city": "Dallas",
+      "state": "TX",
+      "region": "Texas",
+      "unit": "S34512-DISP-03",
+      "ci": "S34512-DISP-03",
+      "ci_class": "Fuel Dispenser",
+      "issue_type": "fuel_card_reader",
+      "count_90d": 5,
+      "count_365d": 9,
+      "p_value": 2.281452293544966e-12,
+      "last_incident": "2026-11-02T16:00:00",
+      "cost_365d_usd": 43750.83,
+      "lost_sales_365d_usd": 41935.83,
+      "truck_rolls": 6,
+      "recommendation": "Replace the secure card reader (permanent fix) instead of another remote reset.",
+      "problem": "PRB0040006",
+      "incidents": [
+       "INC0010326",
+       "INC0016843",
+       "INC0028055",
+       "INC0029409",
+       "INC0036086",
+       "INC0036905",
+       "INC0037042",
+       "INC0037512",
+       "INC0038944"
+      ],
+      "citations": [
+       "INC0036086",
+       "INC0036905",
+       "INC0037042",
+       "INC0037512",
+       "INC0038944",
+       "PRB0040006"
+      ]
+     },
+     {
+      "store_id": 23674,
+      "city": "Dallas",
+      "state": "TX",
+      "region": "Texas",
+      "unit": "S23674-DISP-02",
+      "ci": "S23674-DISP-02",
+      "ci_class": "Fuel Dispenser",
+      "issue_type": "fuel_card_reader",
+      "count_90d": 4,
+      "count_365d": 7,
+      "p_value": 3.554522142436595e-09,
+      "last_incident": "2026-11-02T19:02:38",
+      "cost_365d_usd": 25293.05,
+      "lost_sales_365d_usd": 23548.05,
+      "truck_rolls": 6,
+      "recommendation": "Replace the secure card reader (permanent fix) instead of another remote reset.",
+      "problem": "PRB0040006",
+      "incidents": [
+       "INC0019178",
+       "INC0019623",
+       "INC0026867",
+       "INC0034146",
+       "INC0035601",
+       "INC0038268",
+       "INC0038955"
+      ],
+      "citations": [
+       "INC0026867",
+       "INC0034146",
+       "INC0035601",
+       "INC0038268",
+       "INC0038955",
+       "PRB0040006"
+      ]
+     },
+     {
+      "store_id": 23878,
+      "city": "Oklahoma City",
+      "state": "OK",
+      "region": "Texas",
+      "unit": "S23878-DISP-05",
+      "ci": "S23878-DISP-05",
+      "ci_class": "Fuel Dispenser",
+      "issue_type": "fuel_card_reader",
+      "count_90d": 2,
+      "count_365d": 7,
+      "p_value": 3.554522142436595e-09,
+      "last_incident": "2026-10-28T22:55:59",
+      "cost_365d_usd": 23553.85,
+      "lost_sales_365d_usd": 22058.85,
+      "truck_rolls": 5,
+      "recommendation": "Replace the secure card reader (permanent fix) instead of another remote reset.",
+      "problem": "PRB0040006",
+      "incidents": [
+       "INC0013566",
+       "INC0019915",
+       "INC0023139",
+       "INC0024607",
+       "INC0030503",
+       "INC0036569",
+       "INC0038577"
+      ],
+      "citations": [
+       "INC0023139",
+       "INC0024607",
+       "INC0030503",
+       "INC0036569",
+       "INC0038577",
+       "PRB0040006"
+      ]
+     },
+     {
+      "store_id": 30798,
+      "city": "Houston",
+      "state": "TX",
+      "region": "Texas",
+      "unit": "S30798-CLR-01",
+      "ci": "S30798-CLR-01",
+      "ci_class": "Walk-in Cooler Controller",
+      "issue_type": "cooler_temp",
+      "count_90d": 2,
+      "count_365d": 9,
+      "p_value": 1.063867024965135e-07,
+      "last_incident": "2026-11-01T13:44:59",
+      "cost_365d_usd": 7008.93,
+      "lost_sales_365d_usd": 4443.93,
+      "truck_rolls": 9,
+      "recommendation": "Compressor/fan replacement and open a problem record.",
+      "problem": "PRB0040007",
+      "incidents": [
+       "INC0011515",
+       "INC0012075",
+       "INC0014416",
+       "INC0022584",
+       "INC0024281",
+       "INC0027744",
+       "INC0027976",
+       "INC0034671",
+       "INC0038861"
+      ],
+      "citations": [
+       "INC0024281",
+       "INC0027744",
+       "INC0027976",
+       "INC0034671",
+       "INC0038861",
+       "PRB0040007"
+      ]
+     },
+     {
+      "store_id": 15964,
+      "city": "McAllen",
+      "state": "TX",
+      "region": "Texas",
+      "unit": "S15964-PIN-02",
+      "ci": "S15964-PIN-02",
+      "ci_class": "PIN Pad",
+      "issue_type": "pinpad_hw",
+      "count_90d": 2,
+      "count_365d": 11,
+      "p_value": 9.479799695236317e-11,
+      "last_incident": "2026-10-28T23:06:22",
+      "cost_365d_usd": 7005.11,
+      "lost_sales_365d_usd": 4870.11,
+      "truck_rolls": 7,
+      "recommendation": "Replace the PIN pad.",
+      "problem": null,
+      "incidents": [
+       "INC0010260",
+       "INC0013682",
+       "INC0014977",
+       "INC0018468",
+       "INC0019442",
+       "INC0021461",
+       "INC0022872",
+       "INC0023455",
+       "INC0031293",
+       "INC0038440",
+       "INC0038578"
+      ],
+      "citations": [
+       "INC0022872",
+       "INC0023455",
+       "INC0031293",
+       "INC0038440",
+       "INC0038578"
+      ]
+     },
+     {
+      "store_id": 21666,
+      "city": "Houston",
+      "state": "TX",
+      "region": "Texas",
+      "unit": "S21666-7NOW-01",
+      "ci": "S21666-7NOW-01",
+      "ci_class": "7NOW Tablet",
+      "issue_type": "sevennow_orders",
+      "count_90d": 4,
+      "count_365d": 7,
+      "p_value": 0.0012017442377416706,
+      "last_incident": "2026-11-04T01:32:51",
+      "cost_365d_usd": 1401.67,
+      "lost_sales_365d_usd": 1156.67,
+      "truck_rolls": 0,
+      "recommendation": "Replace the 7NOW tablet.",
+      "problem": null,
+      "incidents": [
+       "INC0018177",
+       "INC0023253",
+       "INC0030283",
+       "INC0033067",
+       "INC0035724",
+       "INC0038298",
+       "INC0039051"
+      ],
+      "citations": [
+       "INC0030283",
+       "INC0033067",
+       "INC0035724",
+       "INC0038298",
+       "INC0039051"
+      ]
+     },
+     {
+      "store_id": 34496,
+      "city": "Dallas",
+      "state": "TX",
+      "region": "Texas",
+      "unit": "S34496-SLP-01",
+      "ci": "S34496-SLP-01",
+      "ci_class": "Slurpee Machine",
+      "issue_type": "slurpee",
+      "count_90d": 3,
+      "count_365d": 3,
+      "p_value": 0.0005388882864648752,
+      "last_incident": "2026-10-31T22:15:13",
+      "cost_365d_usd": 1375.71,
+      "lost_sales_365d_usd": 770.71,
+      "truck_rolls": 2,
+      "recommendation": "Investigate root cause and open a problem record.",
+      "problem": null,
+      "incidents": [
+       "INC0035551",
+       "INC0038158",
+       "INC0038818"
+      ],
+      "citations": [
+       "INC0035551",
+       "INC0038158",
+       "INC0038818"
+      ]
+     },
+     {
+      "store_id": 12680,
+      "city": "Plano",
+      "state": "TX",
+      "region": "Texas",
+      "unit": "S12680-BOPC-01",
+      "ci": "S12680-BOPC-01",
+      "ci_class": "Back Office PC",
+      "issue_type": "access_lockout",
+      "count_90d": 5,
+      "count_365d": 5,
+      "p_value": 1.944656945284058e-05,
+      "last_incident": "2026-10-29T16:13:56",
+      "cost_365d_usd": 425.0,
+      "lost_sales_365d_usd": 0.0,
+      "truck_rolls": 1,
+      "recommendation": "Investigate root cause and open a problem record.",
+      "problem": null,
+      "incidents": [
+       "INC0031773",
+       "INC0034197",
+       "INC0035142",
+       "INC0037796",
+       "INC0038617"
+      ],
+      "citations": [
+       "INC0031773",
+       "INC0034197",
+       "INC0035142",
+       "INC0037796",
+       "INC0038617"
+      ]
+     },
+     {
+      "store_id": 91492,
+      "city": "Houston",
+      "state": "TX",
+      "region": "Texas",
+      "unit": "S91492-BOPC-01",
+      "ci": "S91492-BOPC-01",
+      "ci_class": "Back Office PC",
+      "issue_type": "access_lockout",
+      "count_90d": 3,
+      "count_365d": 5,
+      "p_value": 0.004066149580515649,
+      "last_incident": "2026-11-03T19:23:45",
+      "cost_365d_usd": 425.0,
+      "lost_sales_365d_usd": 0.0,
+      "truck_rolls": 1,
+      "recommendation": "Investigate root cause and open a problem record.",
+      "problem": null,
+      "incidents": [
+       "INC0012257",
+       "INC0030759",
+       "INC0033611",
+       "INC0035037",
+       "INC0039029"
+      ],
+      "citations": [
+       "INC0012257",
+       "INC0030759",
+       "INC0033611",
+       "INC0035037",
+       "INC0039029"
+      ]
+     }
+    ],
+    "changes_next_24h": [
+     {
+      "number": "CHG0030840",
+      "short_description": "Price book service deployment 2026.26",
+      "planned_start": "2026-11-05T09:00:00",
+      "scope": "Enterprise (all stores)",
+      "risk": "Low"
+     }
+    ],
+    "notable_resolutions": [
+     {
+      "number": "INC0039082",
+      "store_id": 21437,
+      "short_description": "Store 21437: credit/debit not approving, cash only",
+      "resolved_at": "2026-11-04T15:56:01",
+      "close_notes": "Re-injected P2PE keys remotely to PIN pads; authorizations approving."
+     }
+    ],
+    "counts_by_region": {
+     "Central": 7,
+     "Mid-Atlantic": 11,
+     "Northeast": 3,
+     "Southeast": 13,
+     "Texas": 79,
+     "West": 15
+    },
+    "open_store_incidents": 79
+   },
+   "citations": [
+    "INC0039143",
+    "INC0039096",
+    "INC0039104",
+    "INC0039105",
+    "INC0039115",
+    "INC0039126",
+    "CHG0030840"
+   ]
+  }
+ ],
+ "recorded_at_mock": "2026-11-04T18:00:26.912898816"
+}

@@ -1,0 +1,10 @@
+data/raw/
+data/cache/tfidf*
+data/audit/
+.venv/
+node_modules/
+frontend/dist/
+__pycache__/
+*.pyc
+.pytest_cache/
+demo/out/video_tmp/

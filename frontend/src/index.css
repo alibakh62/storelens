@@ -1,0 +1,38 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* light theme mirrors the dark tokens */
+  --bg: 244 246 250; --surface: 255 255 255; --surface-2: 237 241 247; --border: 214 221 232;
+  --text: 17 24 39; --muted: 92 105 128;
+  --accent: 14 143 96; --warn: 180 110 0; --crit: 207 52 33; --info: 44 108 224; --money: 161 118 0;
+}
+.dark {
+  --bg: 11 15 23; --surface: 18 24 38; --surface-2: 24 32 51; --border: 36 48 73;
+  --text: 230 234 242; --muted: 138 150 173;
+  --accent: 24 182 122; --warn: 245 165 36; --crit: 240 82 61; --info: 76 141 255; --money: 247 201 72;
+}
+html, body, #root { height: 100%; }
+body { @apply bg-bg text-text font-sans antialiased; font-size: 14px; }
+.tabular { font-variant-numeric: tabular-nums; }
+.card { @apply bg-surface border border-border rounded-card; }
+.chip { @apply inline-flex items-center gap-1 rounded-md border border-border bg-surface2 px-2 py-0.5 text-xs; }
+.btn { @apply inline-flex items-center gap-1.5 rounded-lg border border-border bg-surface2 px-3 py-1.5 text-sm transition-colors; }
+.btn:hover { border-color: rgb(var(--info) / 0.6); }
+.btn:focus-visible { outline: 2px solid rgb(var(--info)); outline-offset: 1px; }
+.btn-primary { background: rgb(var(--info) / 0.15); border-color: rgb(var(--info) / 0.5); }
+.label { @apply text-[11px] uppercase tracking-wider text-muted font-medium; }
+.scroll-thin::-webkit-scrollbar { width: 8px; height: 8px; }
+.scroll-thin::-webkit-scrollbar-thumb { background: rgb(var(--border)); border-radius: 8px; }
+.leaflet-container { background: transparent !important; font-family: inherit; }
+.leaflet-tooltip { background: rgb(var(--surface)); color: rgb(var(--text)); border: 1px solid rgb(var(--border)); box-shadow: none; }
+.md h1 { @apply text-lg font-semibold mb-2; }
+.md h2 { @apply text-base font-semibold mt-4 mb-1; }
+.md ul { @apply list-disc pl-5 space-y-0.5; }
+.md p { @apply mb-2; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+@keyframes pulse-ring { 0% { transform: scale(.6); opacity: .9 } 100% { transform: scale(2.4); opacity: 0 } }
+.pulse-ring { animation: pulse-ring 1.6s ease-out infinite; }
+@keyframes blink { 50% { opacity: 0 } }
+.caret::after { content: "▍"; margin-left: 2px; animation: blink 1s steps(1) infinite; color: rgb(var(--info)); }

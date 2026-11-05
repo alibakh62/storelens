@@ -1,0 +1,416 @@
+{
+ "question": "How much is the DFW outage costing us?",
+ "persona": "manager",
+ "store_id": 34512,
+ "incident_number": "INC0038944",
+ "recorded_from": "template",
+ "calls": [
+  {
+   "name": "estimate_impact",
+   "args": {
+    "number": "INC0039143"
+   }
+  }
+ ],
+ "answer": {
+  "headline": "$10.3k est. lost sales so far \u2014 and about $6,401 more every hour",
+  "status": "critical",
+  "bullets": [
+   {
+    "text": "$10.3k across 54 affected stores (counted once per store), $6,401/hour at the current hour's sales baseline.",
+    "citations": [
+     "INC0039143"
+    ]
+   },
+   {
+    "text": "By stream: fuel $5,713, inside sales $3,476, lottery $651, 7NOW delivery $425, EV charging $12.",
+    "citations": [
+     "INC0039143"
+    ]
+   },
+   {
+    "text": "Hardest hit: store 34512 $2,655, store 98772 $2,415, store 90612 $1,665.",
+    "citations": [
+     "INC0039096",
+     "INC0039138",
+     "INC0039104"
+    ]
+   }
+  ],
+  "impact": {
+   "usd_so_far": 10276.26,
+   "per_hour_now": 6401.05,
+   "as_of": "2026-11-04T18:00:22.791944702",
+   "restricted": false,
+   "scope": "major"
+  },
+  "sections": [
+   {
+    "title": "How we estimate",
+    "bullets": [
+     {
+      "text": "Estimate: hourly sales baseline \u00d7 service loss profile. Gross sales, not margin.",
+      "citations": [
+       "INC0039143"
+      ],
+      "sources": [
+       "estimate_impact"
+      ]
+     }
+    ]
+   }
+  ],
+  "panels": [
+   "impact"
+  ],
+  "recommended_actions": [],
+  "followups": [
+   "Is this affecting other stores?",
+   "Which of my stores are at SLA risk?",
+   "How much is this costing us?"
+  ],
+  "confidence": "high"
+ },
+ "tool_results": [
+  {
+   "store_id": 34512,
+   "store_name": "7-Eleven #34512",
+   "city": "Dallas",
+   "state": "TX",
+   "region": "Texas",
+   "market": "Dallas",
+   "store_format": "Fuel Plus",
+   "banner": "7-Eleven",
+   "utc_offset_std": -6,
+   "timezone": "America/Chicago",
+   "as_of": "2026-11-04T18:00:22.745325932",
+   "health_score": 22,
+   "band": "Critical",
+   "score_breakdown": [
+    {
+     "reason": "Open P1: INC0039096",
+     "points": -35,
+     "citation": "INC0039096"
+    },
+    {
+     "reason": "Open P2: INC0039137",
+     "points": -20,
+     "citation": "INC0039137"
+    },
+    {
+     "reason": "Open P4: INC0038944",
+     "points": -3,
+     "citation": "INC0038944"
+    },
+    {
+     "reason": "1 chronic device flag(s)",
+     "points": -10,
+     "citation": null
+    },
+    {
+     "reason": "90-day incident count in the top 10% of Fuel Plus stores",
+     "points": -10,
+     "citation": null
+    }
+   ],
+   "open_incidents": [
+    {
+     "number": "INC0039096",
+     "priority": "1 - Critical",
+     "priority_num": 1,
+     "short_description": "STORE DOWN: 34512 unreachable, registers in offline mode",
+     "state": "In Progress",
+     "on_hold_reason": null,
+     "issue_type": "store_offline",
+     "category": "Network",
+     "cmdb_ci": "S34512-RTR-01",
+     "assignment_group": "Network Operations",
+     "opened_at": "2026-11-04T15:55:03",
+     "age_h": 2.09,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-04T19:55:03",
+      "remaining_h": 1.91
+     },
+     "parent_incident": "INC0039143",
+     "est_impact_usd": 2655.28,
+     "per_hour_now_usd": 1480.26,
+     "impact_profile": "store_offline",
+     "vendor_ticket": "SPEC-71680009",
+     "caused_by_change": null,
+     "problem_id": "PRB0040005"
+    },
+    {
+     "number": "INC0039137",
+     "priority": "2 - High",
+     "priority_num": 2,
+     "short_description": "Cards declining 'host unavailable' at store 34512",
+     "state": "In Progress",
+     "on_hold_reason": null,
+     "issue_type": "card_declines",
+     "category": "Payments",
+     "cmdb_ci": "S34512-PIN-02",
+     "assignment_group": "Payments Engineering",
+     "opened_at": "2026-11-04T16:18:33",
+     "age_h": 1.7,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-05T00:18:33",
+      "remaining_h": 6.3
+     },
+     "parent_incident": "INC0039143",
+     "est_impact_usd": 2059.1,
+     "per_hour_now_usd": 1400.92,
+     "impact_profile": "card_payments_down",
+     "vendor_ticket": null,
+     "caused_by_change": null,
+     "problem_id": "PRB0040005"
+    },
+    {
+     "number": "INC0038944",
+     "priority": "4 - Low",
+     "priority_num": 4,
+     "short_description": "Dispenser 3 not taking cards at store 34512",
+     "state": "On Hold",
+     "on_hold_reason": "Awaiting Parts",
+     "issue_type": "fuel_card_reader",
+     "category": "Fuel",
+     "cmdb_ci": "S34512-DISP-03",
+     "assignment_group": "Fuel Systems Support",
+     "opened_at": "2026-11-02T16:00:00",
+     "age_h": 50.01,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-07T16:00:00",
+      "remaining_h": 69.99
+     },
+     "parent_incident": null,
+     "est_impact_usd": 5787.93,
+     "per_hour_now_usd": 161.58,
+     "impact_profile": "pumps_partial",
+     "vendor_ticket": "VND-9766900",
+     "caused_by_change": null,
+     "problem_id": "PRB0040006"
+    }
+   ],
+   "counts_30d": 11,
+   "counts_90d": 19,
+   "counts_365d": 46,
+   "fleet_percentile_90d": 99.9,
+   "mttr_90d_hours": 22.56,
+   "fleet_mttr_90d_hours": 9.76,
+   "top_categories_90d": [
+    {
+     "category": "Fuel",
+     "count": 6
+    },
+    {
+     "category": "EV Charging",
+     "count": 2
+    },
+    {
+     "category": "Point of Sale",
+     "count": 2
+    }
+   ],
+   "chronic_flags": [
+    {
+     "store_id": 34512,
+     "city": "Dallas",
+     "state": "TX",
+     "region": "Texas",
+     "unit": "S34512-DISP-03",
+     "ci": "S34512-DISP-03",
+     "ci_class": "Fuel Dispenser",
+     "issue_type": "fuel_card_reader",
+     "count_90d": 5,
+     "count_365d": 9,
+     "p_value": 2.281452293544966e-12,
+     "last_incident": "2026-11-02T16:00:00",
+     "cost_365d_usd": 43750.83,
+     "lost_sales_365d_usd": 41935.83,
+     "truck_rolls": 6,
+     "recommendation": "Replace the secure card reader (permanent fix) instead of another remote reset.",
+     "problem": "PRB0040006",
+     "incidents": [
+      "INC0010326",
+      "INC0016843",
+      "INC0028055",
+      "INC0029409",
+      "INC0036086",
+      "INC0036905",
+      "INC0037042",
+      "INC0037512",
+      "INC0038944"
+     ],
+     "citations": [
+      "INC0036086",
+      "INC0036905",
+      "INC0037042",
+      "INC0037512",
+      "INC0038944",
+      "PRB0040006"
+     ]
+    }
+   ],
+   "upcoming_changes": [
+    {
+     "number": "CHG0030845",
+     "short_description": "Store 34512: PIN pad refresh - contactless upgrade",
+     "type": "Standard",
+     "category": "Hardware",
+     "scope": "Single store",
+     "ci_class": "PIN Pad",
+     "version_from": null,
+     "version_to": null,
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "Field Services - Dispatch",
+     "planned_start": "2026-11-09T13:00:00",
+     "planned_end": "2026-11-09T17:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 1,
+     "enterprise": false
+    },
+    {
+     "number": "CHG0030840",
+     "short_description": "Price book service deployment 2026.26",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all stores)",
+     "ci_class": "Pricing Service",
+     "version_from": null,
+     "version_to": null,
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "Production Support - Store Systems",
+     "planned_start": "2026-11-05T09:00:00",
+     "planned_end": "2026-11-05T11:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 0,
+     "enterprise": true
+    },
+    {
+     "number": "CHG0030846",
+     "short_description": "7NOW platform release v4.53 (order routing / catalog services)",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all 7NOW stores)",
+     "ci_class": "7NOW Platform",
+     "version_from": "v4.52",
+     "version_to": "v4.53",
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "7NOW Digital Support",
+     "planned_start": "2026-11-10T15:00:00",
+     "planned_end": "2026-11-10T17:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 0,
+     "enterprise": true
+    }
+   ],
+   "recent_changes": [
+    {
+     "number": "CHG0030836",
+     "short_description": "7NOW platform release v4.52 (order routing / catalog services)",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all 7NOW stores)",
+     "ci_class": "7NOW Platform",
+     "version_from": "v4.51",
+     "version_to": "v4.52",
+     "risk": "Low",
+     "state": "Review",
+     "assignment_group": "7NOW Digital Support",
+     "planned_start": "2026-11-03T15:00:00",
+     "planned_end": "2026-11-03T17:00:00",
+     "actual_start": "2026-11-03T15:09:44",
+     "actual_end": "2026-11-03T16:23:16",
+     "close_code": "Successful",
+     "close_notes": "Deployed; synthetic order tests passed.",
+     "stores_affected": 0,
+     "enterprise": true
+    }
+   ],
+   "lost_sales_365d_usd": 108383.01,
+   "open_impact_usd": 8443.21,
+   "open_impact_per_hour_usd": 1641.84,
+   "citations": [
+    "INC0039096",
+    "INC0039137",
+    "INC0038944",
+    "INC0036086",
+    "INC0036905",
+    "INC0037042",
+    "INC0037512",
+    "PRB0040006",
+    "CHG0030845",
+    "CHG0030840",
+    "CHG0030846",
+    "CHG0030836"
+   ]
+  },
+  {
+   "number": "INC0039143",
+   "major": true,
+   "usd": 10276.26,
+   "usd_so_far": 10276.26,
+   "per_hour_now": 6401.05,
+   "by_stream": {
+    "inside": 3475.92,
+    "fuel": 5712.73,
+    "sevennow": 424.59,
+    "lottery": 650.58,
+    "ev": 12.45
+   },
+   "stores": 54,
+   "as_of": "2026-11-04T18:00:22.791944702",
+   "top_stores": [
+    {
+     "store_id": 34512,
+     "usd": 2655.3,
+     "incident_number": "INC0039096"
+    },
+    {
+     "store_id": 98772,
+     "usd": 2415.15,
+     "incident_number": "INC0039138"
+    },
+    {
+     "store_id": 90612,
+     "usd": 1665.25,
+     "incident_number": "INC0039104"
+    },
+    {
+     "store_id": 58648,
+     "usd": 875.37,
+     "incident_number": "INC0039115"
+    },
+    {
+     "store_id": 11101,
+     "usd": 424.74,
+     "incident_number": "INC0039132"
+    }
+   ],
+   "footnote": "Estimate: hourly sales baseline \u00d7 service loss profile. Gross sales, not margin.",
+   "citations": [
+    "INC0039143",
+    "INC0039096",
+    "INC0039138",
+    "INC0039104",
+    "INC0039115",
+    "INC0039132"
+   ]
+  }
+ ],
+ "recorded_at_mock": "2026-11-04T18:00:22.854237054"
+}

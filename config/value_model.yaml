@@ -1,0 +1,18 @@
+# Every lever is labeled: measured (from validation), mock-derived (computed from data), or assumption.
+fleet_store_count: 13000          # ASSUMPTION – replace with internal count
+ops_users: 300                    # ASSUMPTION – TSC + NOC + Prod Support + regional managers
+lookups_per_user_per_day: 10      # ASSUMPTION – validate in interviews
+minutes_saved_per_lookup: {low: 4, base: 8, high: 12}   # MEASURED – time trial (§17)
+working_days: 250
+loaded_cost_per_hour: 45          # ASSUMPTION
+mttr_reduction_on_assisted: {low: 0.05, base: 0.10, high: 0.20}  # ASSUMPTION – pilot KPI
+sales_recapture: 0.5              # ASSUMPTION – share of lost sales customers spend later anyway
+repeat_prevented_share: {low: 0.2, base: 0.35, high: 0.5} # ASSUMPTION – chronic "replace, don't reset"
+handling_cost_per_incident: 35    # ASSUMPTION
+truck_roll_cost: 250              # ASSUMPTION
+# LLM run cost (assumption until measured in eval)
+llm_queries_per_user_per_day: 4   # ASSUMPTION
+llm_tokens_in_per_answer: 9000    # replaced by eval measurement when available
+llm_tokens_out_per_answer: 700
+llm_price_in_per_mtok: 3.0        # ASSUMPTION – approved endpoint price, USD per 1M tokens
+llm_price_out_per_mtok: 15.0

@@ -1,0 +1,1086 @@
+{
+ "question": "What fixed this last time?",
+ "persona": "exec",
+ "store_id": 34512,
+ "incident_number": "INC0038944",
+ "recorded_from": "template",
+ "calls": [
+  {
+   "name": "find_similar_incidents",
+   "args": {
+    "number": "INC0038944"
+   }
+  },
+  {
+   "name": "search_kb",
+   "args": {
+    "query": "Dispenser 3 not taking cards at store 34512",
+    "issue_type": "fuel_card_reader"
+   }
+  },
+  {
+   "name": "get_chronic",
+   "args": {
+    "store_id": 34512
+   }
+  }
+ ],
+ "answer": {
+  "headline": "Failure #9 on pump 3 card reader in 12 months \u2014 past fixes aren't holding",
+  "status": "watch",
+  "bullets": [
+   {
+    "text": "Pump 3 card reader has failed 9 times in 12 months; 4 of 8 repairs were followed by another failure within 30 days.",
+    "citations": [
+     "INC0037512",
+     "INC0037042",
+     "INC0036905",
+     "INC0036086",
+     "INC0038944"
+    ]
+   },
+   {
+    "text": "Repeat failures on it cost an estimated $43.8k in the last 12 months (lost sales, handling and truck rolls).",
+    "citations": [
+     "INC0038944",
+     "PRB0040006"
+    ]
+   },
+   {
+    "text": "Recommendation: replace the card reader rather than reset it again; a vendor fix is tracked under known error PRB0040006.",
+    "citations": [
+     "PRB0040006"
+    ]
+   }
+  ],
+  "panels": [
+   "similar"
+  ],
+  "sections": [],
+  "recommended_actions": [],
+  "followups": [
+   "Is this affecting other stores?",
+   "How much is this costing us?",
+   "What should I tell stakeholders?"
+  ],
+  "confidence": "high",
+  "impact": null
+ },
+ "tool_results": [
+  {
+   "store_id": 34512,
+   "store_name": "7-Eleven #34512",
+   "city": "Dallas",
+   "state": "TX",
+   "region": "Texas",
+   "market": "Dallas",
+   "store_format": "Fuel Plus",
+   "banner": "7-Eleven",
+   "utc_offset_std": -6,
+   "timezone": "America/Chicago",
+   "as_of": "2026-11-04T18:00:12.538328419",
+   "health_score": 22,
+   "band": "Critical",
+   "score_breakdown": [
+    {
+     "reason": "Open P1: INC0039096",
+     "points": -35,
+     "citation": "INC0039096"
+    },
+    {
+     "reason": "Open P2: INC0039137",
+     "points": -20,
+     "citation": "INC0039137"
+    },
+    {
+     "reason": "Open P4: INC0038944",
+     "points": -3,
+     "citation": "INC0038944"
+    },
+    {
+     "reason": "1 chronic device flag(s)",
+     "points": -10,
+     "citation": null
+    },
+    {
+     "reason": "90-day incident count in the top 10% of Fuel Plus stores",
+     "points": -10,
+     "citation": null
+    }
+   ],
+   "open_incidents": [
+    {
+     "number": "INC0039096",
+     "priority": "1 - Critical",
+     "priority_num": 1,
+     "short_description": "STORE DOWN: 34512 unreachable, registers in offline mode",
+     "state": "In Progress",
+     "on_hold_reason": null,
+     "issue_type": "store_offline",
+     "category": "Network",
+     "cmdb_ci": "S34512-RTR-01",
+     "assignment_group": "Network Operations",
+     "opened_at": "2026-11-04T15:55:03",
+     "age_h": 2.09,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-04T19:55:03",
+      "remaining_h": 1.91
+     },
+     "parent_incident": "INC0039143",
+     "est_impact_usd": 2651.09,
+     "per_hour_now_usd": 1480.26,
+     "impact_profile": "store_offline",
+     "vendor_ticket": "SPEC-71680009",
+     "caused_by_change": null,
+     "problem_id": "PRB0040005"
+    },
+    {
+     "number": "INC0039137",
+     "priority": "2 - High",
+     "priority_num": 2,
+     "short_description": "Cards declining 'host unavailable' at store 34512",
+     "state": "In Progress",
+     "on_hold_reason": null,
+     "issue_type": "card_declines",
+     "category": "Payments",
+     "cmdb_ci": "S34512-PIN-02",
+     "assignment_group": "Payments Engineering",
+     "opened_at": "2026-11-04T16:18:33",
+     "age_h": 1.69,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-05T00:18:33",
+      "remaining_h": 6.31
+     },
+     "parent_incident": "INC0039143",
+     "est_impact_usd": 2055.13,
+     "per_hour_now_usd": 1400.92,
+     "impact_profile": "card_payments_down",
+     "vendor_ticket": null,
+     "caused_by_change": null,
+     "problem_id": "PRB0040005"
+    },
+    {
+     "number": "INC0038944",
+     "priority": "4 - Low",
+     "priority_num": 4,
+     "short_description": "Dispenser 3 not taking cards at store 34512",
+     "state": "On Hold",
+     "on_hold_reason": "Awaiting Parts",
+     "issue_type": "fuel_card_reader",
+     "category": "Fuel",
+     "cmdb_ci": "S34512-DISP-03",
+     "assignment_group": "Fuel Systems Support",
+     "opened_at": "2026-11-02T16:00:00",
+     "age_h": 50.0,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-07T16:00:00",
+      "remaining_h": 70.0
+     },
+     "parent_incident": null,
+     "est_impact_usd": 5787.47,
+     "per_hour_now_usd": 161.58,
+     "impact_profile": "pumps_partial",
+     "vendor_ticket": "VND-9766900",
+     "caused_by_change": null,
+     "problem_id": "PRB0040006"
+    }
+   ],
+   "counts_30d": 11,
+   "counts_90d": 19,
+   "counts_365d": 46,
+   "fleet_percentile_90d": 99.9,
+   "mttr_90d_hours": 22.56,
+   "fleet_mttr_90d_hours": 9.76,
+   "top_categories_90d": [
+    {
+     "category": "Fuel",
+     "count": 6
+    },
+    {
+     "category": "EV Charging",
+     "count": 2
+    },
+    {
+     "category": "Point of Sale",
+     "count": 2
+    }
+   ],
+   "chronic_flags": [
+    {
+     "store_id": 34512,
+     "city": "Dallas",
+     "state": "TX",
+     "region": "Texas",
+     "unit": "S34512-DISP-03",
+     "ci": "S34512-DISP-03",
+     "ci_class": "Fuel Dispenser",
+     "issue_type": "fuel_card_reader",
+     "count_90d": 5,
+     "count_365d": 9,
+     "p_value": 2.281452293544966e-12,
+     "last_incident": "2026-11-02T16:00:00",
+     "cost_365d_usd": 43750.83,
+     "lost_sales_365d_usd": 41935.83,
+     "truck_rolls": 6,
+     "recommendation": "Replace the secure card reader (permanent fix) instead of another remote reset.",
+     "problem": "PRB0040006",
+     "incidents": [
+      "INC0010326",
+      "INC0016843",
+      "INC0028055",
+      "INC0029409",
+      "INC0036086",
+      "INC0036905",
+      "INC0037042",
+      "INC0037512",
+      "INC0038944"
+     ],
+     "citations": [
+      "INC0036086",
+      "INC0036905",
+      "INC0037042",
+      "INC0037512",
+      "INC0038944",
+      "PRB0040006"
+     ]
+    }
+   ],
+   "upcoming_changes": [
+    {
+     "number": "CHG0030845",
+     "short_description": "Store 34512: PIN pad refresh - contactless upgrade",
+     "type": "Standard",
+     "category": "Hardware",
+     "scope": "Single store",
+     "ci_class": "PIN Pad",
+     "version_from": null,
+     "version_to": null,
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "Field Services - Dispatch",
+     "planned_start": "2026-11-09T13:00:00",
+     "planned_end": "2026-11-09T17:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 1,
+     "enterprise": false
+    },
+    {
+     "number": "CHG0030840",
+     "short_description": "Price book service deployment 2026.26",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all stores)",
+     "ci_class": "Pricing Service",
+     "version_from": null,
+     "version_to": null,
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "Production Support - Store Systems",
+     "planned_start": "2026-11-05T09:00:00",
+     "planned_end": "2026-11-05T11:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 0,
+     "enterprise": true
+    },
+    {
+     "number": "CHG0030846",
+     "short_description": "7NOW platform release v4.53 (order routing / catalog services)",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all 7NOW stores)",
+     "ci_class": "7NOW Platform",
+     "version_from": "v4.52",
+     "version_to": "v4.53",
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "7NOW Digital Support",
+     "planned_start": "2026-11-10T15:00:00",
+     "planned_end": "2026-11-10T17:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 0,
+     "enterprise": true
+    }
+   ],
+   "recent_changes": [
+    {
+     "number": "CHG0030836",
+     "short_description": "7NOW platform release v4.52 (order routing / catalog services)",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all 7NOW stores)",
+     "ci_class": "7NOW Platform",
+     "version_from": "v4.51",
+     "version_to": "v4.52",
+     "risk": "Low",
+     "state": "Review",
+     "assignment_group": "7NOW Digital Support",
+     "planned_start": "2026-11-03T15:00:00",
+     "planned_end": "2026-11-03T17:00:00",
+     "actual_start": "2026-11-03T15:09:44",
+     "actual_end": "2026-11-03T16:23:16",
+     "close_code": "Successful",
+     "close_notes": "Deployed; synthetic order tests passed.",
+     "stores_affected": 0,
+     "enterprise": true
+    }
+   ],
+   "lost_sales_365d_usd": 108374.39,
+   "open_impact_usd": 8438.56,
+   "open_impact_per_hour_usd": 1641.84,
+   "citations": [
+    "INC0039096",
+    "INC0039137",
+    "INC0038944",
+    "INC0036086",
+    "INC0036905",
+    "INC0037042",
+    "INC0037512",
+    "PRB0040006",
+    "CHG0030845",
+    "CHG0030840",
+    "CHG0030846",
+    "CHG0030836"
+   ]
+  },
+  {
+   "query": "INC0038944",
+   "issue_type": "fuel_card_reader",
+   "cmdb_ci": "S34512-DISP-03",
+   "tiers": {
+    "device": [
+     {
+      "number": "INC0037512",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-DISP-03",
+      "short_description": "Pump 3 card reader offline - see cashier",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-10-14T23:23:47",
+      "resolved_at": "2026-10-15T14:30:46",
+      "ttr_h": 15.12,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S34512-DISP-03.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": true,
+      "problem_id": "PRB0040006",
+      "score": 0.643
+     },
+     {
+      "number": "INC0037042",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-DISP-03",
+      "short_description": "Dispenser 3 not taking cards at store 34512",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-10-08T21:49:05",
+      "resolved_at": "2026-10-09T18:45:51",
+      "ttr_h": 20.95,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S34512-DISP-03.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": true,
+      "problem_id": "PRB0040006",
+      "score": 0.668
+     },
+     {
+      "number": "INC0036905",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-DISP-03",
+      "short_description": "Pay at pump not working on dispenser 3",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-10-07T12:12:12",
+      "resolved_at": "2026-10-09T17:24:40",
+      "ttr_h": 53.21,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Fuel vendor replaced card reader board in S34512-DISP-03 (ref VND-1781032); pay-at-pump tested OK.",
+      "fix_label": "Replaced card reader board",
+      "recurred_30d": false,
+      "problem_id": "PRB0040006",
+      "score": 0.812
+     },
+     {
+      "number": "INC0036086",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-DISP-03",
+      "short_description": "Pump 3 card reader offline - see cashier",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-09-27T03:55:50",
+      "resolved_at": "2026-09-30T03:53:29",
+      "ttr_h": 71.96,
+      "close_code": "Solved (Work Around)",
+      "close_notes": "Bagged pump 3 for card use; prepay inside only until parts arrive.",
+      "fix_label": "Bagged pump / awaiting parts",
+      "recurred_30d": true,
+      "problem_id": "PRB0040006",
+      "score": 0.793
+     },
+     {
+      "number": "INC0029409",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-DISP-03",
+      "short_description": "Pump 3 card reader offline - see cashier",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-07-09T06:29:15",
+      "resolved_at": "2026-07-11T11:57:46",
+      "ttr_h": 53.48,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S34512-DISP-03.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.624
+     },
+     {
+      "number": "INC0028055",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-DISP-03",
+      "short_description": "Pay at pump not working on dispenser 3",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-06-21T12:08:08",
+      "resolved_at": "2026-06-23T19:01:44",
+      "ttr_h": 54.89,
+      "close_code": "Solved Remotely (Permanently)",
+      "close_notes": "Remotely reset dispenser comms loop from forecourt controller; reader back online.",
+      "fix_label": "Remote comms reset",
+      "recurred_30d": true,
+      "problem_id": "PRB0040006",
+      "score": 0.809
+     },
+     {
+      "number": "INC0016843",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-DISP-03",
+      "short_description": "Dispenser 3 not taking cards at store 34512",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-01-29T12:34:22",
+      "resolved_at": "2026-01-30T05:50:39",
+      "ttr_h": 17.27,
+      "close_code": "Solved Remotely (Permanently)",
+      "close_notes": "Remotely reset dispenser comms loop from forecourt controller; reader back online.",
+      "fix_label": "Remote comms reset",
+      "recurred_30d": false,
+      "problem_id": "PRB0040006",
+      "score": 0.649
+     },
+     {
+      "number": "INC0010326",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-DISP-03",
+      "short_description": "Dispenser 3 not taking cards at store 34512",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2025-11-09T13:34:11",
+      "resolved_at": "2025-11-10T20:29:49",
+      "ttr_h": 30.93,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Fuel vendor replaced card reader board in S34512-DISP-03 (ref VND-3359669); pay-at-pump tested OK.",
+      "fix_label": "Replaced card reader board",
+      "recurred_30d": false,
+      "problem_id": "PRB0040006",
+      "score": 0.605
+     }
+    ],
+    "store": [
+     {
+      "number": "INC0034983",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-DISP-02",
+      "short_description": "Dispenser 2 not taking cards at store 34512",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-09-13T16:55:01",
+      "resolved_at": "2026-09-17T04:41:37",
+      "ttr_h": 83.78,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S34512-DISP-02.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.916
+     },
+     {
+      "number": "INC0021050",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-DISP-07",
+      "short_description": "Pay at pump not working on dispenser 7",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-03-25T13:32:00",
+      "resolved_at": "2026-03-26T13:55:14",
+      "ttr_h": 24.39,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S34512-DISP-07.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.712
+     },
+     {
+      "number": "INC0016143",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-DISP-02",
+      "short_description": "Pump 2 card reader offline - see cashier",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-01-20T12:51:34",
+      "resolved_at": "2026-01-21T08:13:19",
+      "ttr_h": 19.36,
+      "close_code": "Solved (Work Around)",
+      "close_notes": "Bagged pump 2 for card use; prepay inside only until parts arrive.",
+      "fix_label": "Bagged pump / awaiting parts",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.559
+     },
+     {
+      "number": "INC0028825",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-FCC-01",
+      "short_description": "All pumps down at store 34512 - forecourt controller offline",
+      "issue_type": "fuel_controller_down",
+      "state": "Closed",
+      "opened_at": "2026-07-01T21:31:19",
+      "resolved_at": "2026-07-02T05:02:23",
+      "ttr_h": 7.52,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Fuel vendor replaced controller power supply (ref VND-7295818); pumps back in service.",
+      "fix_label": "Hardware replaced",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.215
+     },
+     {
+      "number": "INC0037656",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-7NOW-01",
+      "short_description": "7NOW tablet not showing new orders",
+      "issue_type": "sevennow_orders",
+      "state": "Closed",
+      "opened_at": "2026-10-16T16:18:13",
+      "resolved_at": "2026-10-16T17:17:42",
+      "ttr_h": 0.99,
+      "close_code": "Solved Remotely (Permanently)",
+      "close_notes": "Tablet app updated to current version; order sync restored.",
+      "fix_label": "Re-sync / config fix",
+      "recurred_30d": true,
+      "problem_id": null,
+      "score": 0.151
+     },
+     {
+      "number": "INC0035435",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-ATM-01",
+      "short_description": "ATM out of service at store 34512",
+      "issue_type": "atm_down",
+      "state": "Closed",
+      "opened_at": "2026-09-18T19:41:45",
+      "resolved_at": "2026-09-21T09:22:55",
+      "ttr_h": 61.69,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "ATM provider cleared cash jam and serviced dispenser.",
+      "fix_label": "Re-sync / config fix",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.149
+     },
+     {
+      "number": "INC0038647",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-7NOW-01",
+      "short_description": "No 7NOW orders received since this morning",
+      "issue_type": "sevennow_orders",
+      "state": "Closed",
+      "opened_at": "2026-10-29T21:00:00",
+      "resolved_at": "2026-10-29T21:46:48",
+      "ttr_h": 0.78,
+      "close_code": "Solved Remotely (Permanently)",
+      "close_notes": "Re-activated store in 7NOW ops console and refreshed tablet auth token. Test order received.",
+      "fix_label": "Re-sync / config fix",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.144
+     },
+     {
+      "number": "INC0035126",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-EV-05",
+      "short_description": "7Charge EV charger offline at store 34512",
+      "issue_type": "ev_offline",
+      "state": "Closed",
+      "opened_at": "2026-09-15T13:13:02",
+      "resolved_at": "2026-09-17T20:57:22",
+      "ttr_h": 55.74,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Vendor replaced charging cable/connector on S34512-EV-05.",
+      "fix_label": "Hardware replaced",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.137
+     },
+     {
+      "number": "INC0036826",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-PIN-02",
+      "short_description": "Cards declining 'host unavailable' at store 34512",
+      "issue_type": "card_declines",
+      "state": "Closed",
+      "opened_at": "2026-10-06T14:25:48",
+      "resolved_at": "2026-10-06T18:23:47",
+      "ttr_h": 3.97,
+      "close_code": "Solved Remotely (Permanently)",
+      "close_notes": "Payment host routing issue corrected by processor; transactions approving.",
+      "fix_label": "Re-sync / config fix",
+      "recurred_30d": true,
+      "problem_id": null,
+      "score": 0.128
+     },
+     {
+      "number": "INC0029394",
+      "store_id": 34512,
+      "cmdb_ci": "S34512-7NOW-01",
+      "short_description": "Customers ordering items store doesn't carry via 7NOW",
+      "issue_type": "sevennow_inventory",
+      "state": "Closed",
+      "opened_at": "2026-07-08T22:49:47",
+      "resolved_at": "2026-07-09T06:29:25",
+      "ttr_h": 7.66,
+      "close_code": "Solved Remotely (Permanently)",
+      "close_notes": "Corrected store assortment mapping in 7NOW catalog.",
+      "fix_label": "Re-sync / config fix",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.127
+     }
+    ],
+    "fleet": [
+     {
+      "number": "INC0037823",
+      "store_id": 21879,
+      "cmdb_ci": "S21879-DISP-05",
+      "short_description": "Dispenser 5 not taking cards at store 21879",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-10-19T00:49:37",
+      "resolved_at": "2026-10-19T20:47:25",
+      "ttr_h": 19.96,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S21879-DISP-05.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.872
+     },
+     {
+      "number": "INC0037474",
+      "store_id": 66855,
+      "cmdb_ci": "S66855-DISP-07",
+      "short_description": "Dispenser 7 not taking cards at store 66855",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-10-14T16:08:01",
+      "resolved_at": "2026-10-15T17:52:54",
+      "ttr_h": 25.75,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S66855-DISP-07.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.871
+     },
+     {
+      "number": "INC0036556",
+      "store_id": 49245,
+      "cmdb_ci": "S49245-DISP-02",
+      "short_description": "Dispenser 2 not taking cards at store 49245",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-10-02T20:22:29",
+      "resolved_at": "2026-10-03T09:35:14",
+      "ttr_h": 13.21,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S49245-DISP-02.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.87
+     },
+     {
+      "number": "INC0037255",
+      "store_id": 98637,
+      "cmdb_ci": "S98637-DISP-07",
+      "short_description": "Dispenser 7 not taking cards at store 98637",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-10-11T17:24:40",
+      "resolved_at": "2026-10-12T20:53:56",
+      "ttr_h": 27.49,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S98637-DISP-07.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.87
+     },
+     {
+      "number": "INC0035984",
+      "store_id": 52937,
+      "cmdb_ci": "S52937-DISP-06",
+      "short_description": "Dispenser 6 not taking cards at store 52937",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-09-25T20:21:13",
+      "resolved_at": "2026-09-28T05:11:51",
+      "ttr_h": 56.84,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S52937-DISP-06.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.867
+     },
+     {
+      "number": "INC0033843",
+      "store_id": 33473,
+      "cmdb_ci": "S33473-DISP-04",
+      "short_description": "Dispenser 4 not taking cards at store 33473",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-08-29T18:29:33",
+      "resolved_at": "2026-08-31T20:48:49",
+      "ttr_h": 50.32,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S33473-DISP-04.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.862
+     },
+     {
+      "number": "INC0032896",
+      "store_id": 93249,
+      "cmdb_ci": "S93249-DISP-07",
+      "short_description": "Dispenser 7 not taking cards at store 93249",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-08-17T09:58:31",
+      "resolved_at": "2026-08-19T03:46:44",
+      "ttr_h": 41.8,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S93249-DISP-07.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.858
+     },
+     {
+      "number": "INC0038599",
+      "store_id": 75778,
+      "cmdb_ci": "S75778-DISP-03",
+      "short_description": "Dispenser 3 not taking cards at store 75778",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-10-29T13:31:43",
+      "resolved_at": "2026-10-30T10:29:58",
+      "ttr_h": 20.97,
+      "close_code": "Solved Remotely (Permanently)",
+      "close_notes": "Remotely reset dispenser comms loop from forecourt controller; reader back online.",
+      "fix_label": "Remote comms reset",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.856
+     },
+     {
+      "number": "INC0030779",
+      "store_id": 92436,
+      "cmdb_ci": "S92436-DISP-06",
+      "short_description": "Dispenser 6 not taking cards at store 92436",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-07-26T17:05:12",
+      "resolved_at": "2026-07-30T15:04:31",
+      "ttr_h": 93.99,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S92436-DISP-06.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.855
+     },
+     {
+      "number": "INC0029114",
+      "store_id": 65011,
+      "cmdb_ci": "S65011-DISP-02",
+      "short_description": "Dispenser 2 not taking cards at store 65011",
+      "issue_type": "fuel_card_reader",
+      "state": "Closed",
+      "opened_at": "2026-07-05T17:57:38",
+      "resolved_at": "2026-07-08T03:45:51",
+      "ttr_h": 57.8,
+      "close_code": "Solved (Permanently)",
+      "close_notes": "Replaced failed keypad and secure card reader on S65011-DISP-02.",
+      "fix_label": "Replaced keypad + secure card reader",
+      "recurred_30d": false,
+      "problem_id": null,
+      "score": 0.854
+     }
+    ]
+   },
+   "fix_table": [
+    {
+     "fix_label": "Remote comms reset",
+     "n": 441,
+     "share": 0.242,
+     "median_ttr_h": 35.77,
+     "recurrence_30d": 0.041,
+     "permanent": false,
+     "examples": [
+      "INC0038896",
+      "INC0038895",
+      "INC0038878"
+     ]
+    },
+    {
+     "fix_label": "Replaced keypad + secure card reader",
+     "n": 435,
+     "share": 0.239,
+     "median_ttr_h": 34.82,
+     "recurrence_30d": 0.044,
+     "permanent": true,
+     "examples": [
+      "INC0038972",
+      "INC0038872",
+      "INC0038763"
+     ]
+    },
+    {
+     "fix_label": "Replaced card reader board",
+     "n": 486,
+     "share": 0.267,
+     "median_ttr_h": 34.81,
+     "recurrence_30d": 0.045,
+     "permanent": true,
+     "examples": [
+      "INC0038981",
+      "INC0038974",
+      "INC0038852"
+     ]
+    },
+    {
+     "fix_label": "Bagged pump / awaiting parts",
+     "n": 461,
+     "share": 0.253,
+     "median_ttr_h": 34.71,
+     "recurrence_30d": 0.048,
+     "permanent": false,
+     "examples": [
+      "INC0039050",
+      "INC0039032",
+      "INC0038983"
+     ]
+    }
+   ],
+   "fix_table_n": 1823,
+   "recommendation": "Fleet-wide, the 4 fix types for this issue recur at similar rates (4%\u20135% within 30 days), so the fix type alone does not predict a lasting repair. S34512-DISP-03 has failed 9 times in 12 months; 4 of 8 repairs on it were followed by another failure within 30 days. Recommendation: replace the secure card reader (permanent fix) instead of another remote reset. Known error PRB0040006 (Fix in Progress): Recurring pay-at-pump card reader failures on Gilbarco Encore dispensers. Workaround: Remote reset of dispenser comms loop; replace secure card reader if it fails twice in 30 days. Permanent fix: Vendor firmware 3.4 in pilot.",
+   "recommendation_detail": {
+    "text": "Fleet-wide, the 4 fix types for this issue recur at similar rates (4%\u20135% within 30 days), so the fix type alone does not predict a lasting repair. S34512-DISP-03 has failed 9 times in 12 months; 4 of 8 repairs on it were followed by another failure within 30 days. Recommendation: replace the secure card reader (permanent fix) instead of another remote reset. Known error PRB0040006 (Fix in Progress): Recurring pay-at-pump card reader failures on Gilbarco Encore dispensers. Workaround: Remote reset of dispenser comms loop; replace secure card reader if it fails twice in 30 days. Permanent fix: Vendor firmware 3.4 in pilot.",
+    "best_fix": "Remote comms reset",
+    "fastest_fix": "Bagged pump / awaiting parts",
+    "problem": "PRB0040006",
+    "device_history": [
+     "INC0010326",
+     "INC0016843",
+     "INC0028055",
+     "INC0029409",
+     "INC0036086",
+     "INC0036905",
+     "INC0037042",
+     "INC0037512",
+     "INC0038944"
+    ],
+    "device_failures_365d": 9,
+    "device_fix_table": [
+     {
+      "fix_label": "Replaced keypad + secure card reader",
+      "n": 3,
+      "recurred": 2,
+      "numbers": [
+       "INC0037512",
+       "INC0037042",
+       "INC0029409"
+      ]
+     },
+     {
+      "fix_label": "Replaced card reader board",
+      "n": 2,
+      "recurred": 0,
+      "numbers": [
+       "INC0036905",
+       "INC0010326"
+      ]
+     },
+     {
+      "fix_label": "Remote comms reset",
+      "n": 2,
+      "recurred": 1,
+      "numbers": [
+       "INC0028055",
+       "INC0016843"
+      ]
+     },
+     {
+      "fix_label": "Bagged pump / awaiting parts",
+      "n": 1,
+      "recurred": 1,
+      "numbers": [
+       "INC0036086"
+      ]
+     }
+    ],
+    "citations": [
+     "INC0010326",
+     "INC0016843",
+     "INC0028055",
+     "INC0029409",
+     "INC0036086",
+     "INC0036905",
+     "INC0037042",
+     "INC0037512",
+     "INC0038944",
+     "PRB0040006"
+    ]
+   },
+   "citations": [
+    "INC0038944",
+    "INC0037512",
+    "INC0037042",
+    "INC0036905",
+    "INC0036086",
+    "INC0029409",
+    "INC0028055",
+    "INC0016843",
+    "INC0010326",
+    "INC0034983",
+    "INC0021050",
+    "INC0016143",
+    "INC0037823",
+    "INC0037474",
+    "INC0036556",
+    "PRB0040006"
+   ]
+  },
+  {
+   "query": "Dispenser 3 not taking cards at store 34512",
+   "hits": [
+    {
+     "number": "KB0010012",
+     "short_description": "Fuel - Pay-at-Pump Card Reader: troubleshooting and resolution",
+     "issue_type": "fuel_card_reader",
+     "kb_type": "How-to",
+     "score": 0.713,
+     "symptoms": "Pump N card reader offline - see cashier; Pay at pump not working on dispenser N; Dispenser N not taking cards at store the store; Card reader error on pump N",
+     "resolution_steps": "1. Checked forecourt controller status; had store power-cycle the dispenser\n2. Forecourt controller shows the affected device card reader comms error. Remote reset failed. Dispatching fuel vendor (<vendor ticket>).\n3. Store power-cycled dispenser N; reader still offline.\n4. Known fix: Fuel vendor replaced card reader board in the affected device (ref <vendor ticket>); pay-at-pump tested OK.\n5. Known fix: Replaced failed keypad and secure card reader on the affected device.\n6. Known fix: Remotely reset dispenser comms loop from forecourt controller; reader back online.\n7. Known fix: Bagged pump N for card use; prepay inside only until parts arrive.",
+     "snippet": "1. Checked forecourt controller status; had store power-cycle the dispenser\n2. Forecourt controller shows the affected device card reader comms error. Remote reset failed. Dispatching fuel vendor (<vendor ticket>).\n3. St\u2026",
+     "related_problem": null,
+     "escalation_group": "Fuel Systems Support"
+    },
+    {
+     "number": "KB0010010",
+     "short_description": "Payments - Card Transactions Declining: troubleshooting and resolution",
+     "issue_type": "card_declines",
+     "kb_type": "How-to",
+     "score": 0.075,
+     "symptoms": "All card transactions declining at store the store; Cards declining 'host unavailable' at store the store; Store the store: credit/debit not approving, cash only",
+     "resolution_steps": "1. Verified issue across lanes; checked payment host status\n2. Payment switch logs show TLS handshake failures from store the store.\n3. Network healthy; encryption keys appear expired on PIN pads.\n4. Known fix: Re-injected P2PE keys remotely to PIN pads; authorizations approving.\n5. Known fix: Store certificate for payment gateway expired; renewed and pushed. Cards approving.\n6. Known fix: Payment host routing issue corrected by processor; transactions approving.",
+     "snippet": "1. Verified issue across lanes; checked payment host status\n2. Payment switch logs show TLS handshake failures from store the store.\n3. Network healthy; encryption keys appear expired on PIN pads.\n4. Known fix: Re-inject\u2026",
+     "related_problem": null,
+     "escalation_group": "Payments Engineering"
+    },
+    {
+     "number": "KB0010003",
+     "short_description": "Network - Slow or Intermittent Connectivity: troubleshooting and resolution",
+     "issue_type": "network_slow",
+     "kb_type": "How-to",
+     "score": 0.06,
+     "symptoms": "Registers slow to authorize cards at store the store; Intermittent network drops at store the store; High latency / packet loss at store the store",
+     "resolution_steps": "1. Confirmed affected systems with store; checked SD-WAN dashboard; asked store to verify router/modem power\n2. Observed 8-12% packet loss on WAN1 of the affected device. Running circuit diagnostics with the ISP (<vendor ticket>).\n3. Interface errors increasing on switch uplink; asked store to reseat cable.\n4. Known fix: the ISP found line noise and re-provisioned the circuit (ref <vendor ticket>). Packet loss now 0%.\n5. Known fix: Replaced bad patch cable between router and switch. Interface errors cleared.\n6. Known fix: Steered POS traffic to LTE via SD-WAN policy while the ISP investigates (ref <vendor ticket>).",
+     "snippet": "1. Confirmed affected systems with store; checked SD-WAN dashboard; asked store to verify router/modem power\n2. Observed 8-12% packet loss on WAN1 of the affected device. Running circuit diagnostics with the ISP (<vendor\u2026",
+     "related_problem": null,
+     "escalation_group": "Network Operations"
+    }
+   ],
+   "citations": [
+    "KB0010012",
+    "KB0010010",
+    "KB0010003"
+   ]
+  },
+  {
+   "count": 1,
+   "total_cost_usd": 43750.83,
+   "summary": "1 chronic devices cost an estimated $43,751 in the last 12 months.",
+   "items": [
+    {
+     "store_id": 34512,
+     "city": "Dallas",
+     "state": "TX",
+     "region": "Texas",
+     "unit": "S34512-DISP-03",
+     "ci": "S34512-DISP-03",
+     "ci_class": "Fuel Dispenser",
+     "issue_type": "fuel_card_reader",
+     "count_90d": 5,
+     "count_365d": 9,
+     "p_value": 2.281452293544966e-12,
+     "last_incident": "2026-11-02T16:00:00",
+     "cost_365d_usd": 43750.83,
+     "lost_sales_365d_usd": 41935.83,
+     "truck_rolls": 6,
+     "recommendation": "Replace the secure card reader (permanent fix) instead of another remote reset.",
+     "problem": "PRB0040006",
+     "incidents": [
+      "INC0010326",
+      "INC0016843",
+      "INC0028055",
+      "INC0029409",
+      "INC0036086",
+      "INC0036905",
+      "INC0037042",
+      "INC0037512",
+      "INC0038944"
+     ],
+     "citations": [
+      "INC0036086",
+      "INC0036905",
+      "INC0037042",
+      "INC0037512",
+      "INC0038944",
+      "PRB0040006"
+     ]
+    }
+   ],
+   "store_count": 1,
+   "citations": [
+    "INC0036086",
+    "INC0036905"
+   ]
+  }
+ ],
+ "recorded_at_mock": "2026-11-04T18:00:12.973937276"
+}

@@ -1,0 +1,1111 @@
+{
+ "question": "What's going on at this store?",
+ "persona": "manager",
+ "store_id": 34512,
+ "incident_number": "INC0039137",
+ "recorded_from": "template",
+ "calls": [
+  {
+   "name": "get_store_profile",
+   "args": {
+    "store_id": 34512
+   }
+  },
+  {
+   "name": "get_incident_timeline",
+   "args": {
+    "number": "INC0039143"
+   }
+  },
+  {
+   "name": "estimate_impact",
+   "args": {
+    "number": "INC0039143"
+   }
+  }
+ ],
+ "answer": {
+  "headline": "Store 34512 is hard down \u2014 part of major INC0039143",
+  "status": "critical",
+  "bullets": [
+   {
+    "text": "INC0039096 (P1): STORE DOWN: 34512 unreachable, registers in offline mode \u2014 since 9:55 AM CT (2.1h), In Progress, Network Operations; linked to major INC0039143 (54 stores, 7 offline).",
+    "citations": [
+     "INC0039096",
+     "INC0039143"
+    ]
+   },
+   {
+    "text": "INC0039137: Cards declining 'host unavailable' at store 34512 \u2014 opened 10:18 AM CT; a symptom of the same outage (child of INC0039143), no separate fix needed.",
+    "citations": [
+     "INC0039137",
+     "INC0039143"
+    ]
+   },
+   {
+    "text": "INC0038944: Dispenser 3 not taking cards at store 34512 \u2014 On Hold (Awaiting Parts) for 50h, SLA ok; failure #9 on pump 3 card reader in 12 months.",
+    "citations": [
+     "INC0038944"
+    ]
+   },
+   {
+    "text": "Upcoming: CHG0030845 PIN pad refresh - contactless upgrade \u2014 Mon Nov 9, 7:00 AM CT.",
+    "citations": [
+     "CHG0030845"
+    ]
+   }
+  ],
+  "sections": [],
+  "impact": {
+   "usd_so_far": 8441.4,
+   "per_hour_now": 1641.84,
+   "as_of": "2026-11-04T18:00:18.772294226",
+   "restricted": false,
+   "scope": "store"
+  },
+  "recommended_actions": [
+   {
+    "text": "Track restoration on parent INC0039143; no store-level fix until the provider restores service.",
+    "owner": "Major Incident Management",
+    "citations": [
+     "INC0039143"
+    ]
+   },
+   {
+    "text": "Put up cash-only signage and route fuel customers to the nearest unaffected store.",
+    "owner": "Store / District manager",
+    "citations": [
+     "INC0039096"
+    ]
+   },
+   {
+    "text": "pump 3 card reader: Replace the secure card reader (permanent fix) instead of another remote reset.",
+    "owner": "Fuel Systems Support",
+    "citations": [
+     "INC0038944",
+     "PRB0040006"
+    ]
+   }
+  ],
+  "panels": [
+   "health",
+   "timeline"
+  ],
+  "confidence": "high",
+  "followups": [
+   "Is this affecting other stores?",
+   "Which of my stores are at SLA risk?",
+   "How much is this costing us?"
+  ]
+ },
+ "tool_results": [
+  {
+   "store_id": 34512,
+   "store_name": "7-Eleven #34512",
+   "city": "Dallas",
+   "state": "TX",
+   "region": "Texas",
+   "market": "Dallas",
+   "store_format": "Fuel Plus",
+   "banner": "7-Eleven",
+   "utc_offset_std": -6,
+   "timezone": "America/Chicago",
+   "as_of": "2026-11-04T18:00:18.772294226",
+   "health_score": 22,
+   "band": "Critical",
+   "score_breakdown": [
+    {
+     "reason": "Open P1: INC0039096",
+     "points": -35,
+     "citation": "INC0039096"
+    },
+    {
+     "reason": "Open P2: INC0039137",
+     "points": -20,
+     "citation": "INC0039137"
+    },
+    {
+     "reason": "Open P4: INC0038944",
+     "points": -3,
+     "citation": "INC0038944"
+    },
+    {
+     "reason": "1 chronic device flag(s)",
+     "points": -10,
+     "citation": null
+    },
+    {
+     "reason": "90-day incident count in the top 10% of Fuel Plus stores",
+     "points": -10,
+     "citation": null
+    }
+   ],
+   "open_incidents": [
+    {
+     "number": "INC0039096",
+     "priority": "1 - Critical",
+     "priority_num": 1,
+     "short_description": "STORE DOWN: 34512 unreachable, registers in offline mode",
+     "state": "In Progress",
+     "on_hold_reason": null,
+     "issue_type": "store_offline",
+     "category": "Network",
+     "cmdb_ci": "S34512-RTR-01",
+     "assignment_group": "Network Operations",
+     "opened_at": "2026-11-04T15:55:03",
+     "age_h": 2.09,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-04T19:55:03",
+      "remaining_h": 1.91
+     },
+     "parent_incident": "INC0039143",
+     "est_impact_usd": 2653.65,
+     "per_hour_now_usd": 1480.26,
+     "impact_profile": "store_offline",
+     "vendor_ticket": "SPEC-71680009",
+     "caused_by_change": null,
+     "problem_id": "PRB0040005"
+    },
+    {
+     "number": "INC0039137",
+     "priority": "2 - High",
+     "priority_num": 2,
+     "short_description": "Cards declining 'host unavailable' at store 34512",
+     "state": "In Progress",
+     "on_hold_reason": null,
+     "issue_type": "card_declines",
+     "category": "Payments",
+     "cmdb_ci": "S34512-PIN-02",
+     "assignment_group": "Payments Engineering",
+     "opened_at": "2026-11-04T16:18:33",
+     "age_h": 1.7,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-05T00:18:33",
+      "remaining_h": 6.3
+     },
+     "parent_incident": "INC0039143",
+     "est_impact_usd": 2057.56,
+     "per_hour_now_usd": 1400.92,
+     "impact_profile": "card_payments_down",
+     "vendor_ticket": null,
+     "caused_by_change": null,
+     "problem_id": "PRB0040005"
+    },
+    {
+     "number": "INC0038944",
+     "priority": "4 - Low",
+     "priority_num": 4,
+     "short_description": "Dispenser 3 not taking cards at store 34512",
+     "state": "On Hold",
+     "on_hold_reason": "Awaiting Parts",
+     "issue_type": "fuel_card_reader",
+     "category": "Fuel",
+     "cmdb_ci": "S34512-DISP-03",
+     "assignment_group": "Fuel Systems Support",
+     "opened_at": "2026-11-02T16:00:00",
+     "age_h": 50.01,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-07T16:00:00",
+      "remaining_h": 69.99
+     },
+     "parent_incident": null,
+     "est_impact_usd": 5787.75,
+     "per_hour_now_usd": 161.58,
+     "impact_profile": "pumps_partial",
+     "vendor_ticket": "VND-9766900",
+     "caused_by_change": null,
+     "problem_id": "PRB0040006"
+    }
+   ],
+   "counts_30d": 11,
+   "counts_90d": 19,
+   "counts_365d": 46,
+   "fleet_percentile_90d": 99.9,
+   "mttr_90d_hours": 22.56,
+   "fleet_mttr_90d_hours": 9.76,
+   "top_categories_90d": [
+    {
+     "category": "Fuel",
+     "count": 6
+    },
+    {
+     "category": "EV Charging",
+     "count": 2
+    },
+    {
+     "category": "Point of Sale",
+     "count": 2
+    }
+   ],
+   "chronic_flags": [
+    {
+     "store_id": 34512,
+     "city": "Dallas",
+     "state": "TX",
+     "region": "Texas",
+     "unit": "S34512-DISP-03",
+     "ci": "S34512-DISP-03",
+     "ci_class": "Fuel Dispenser",
+     "issue_type": "fuel_card_reader",
+     "count_90d": 5,
+     "count_365d": 9,
+     "p_value": 2.281452293544966e-12,
+     "last_incident": "2026-11-02T16:00:00",
+     "cost_365d_usd": 43750.83,
+     "lost_sales_365d_usd": 41935.83,
+     "truck_rolls": 6,
+     "recommendation": "Replace the secure card reader (permanent fix) instead of another remote reset.",
+     "problem": "PRB0040006",
+     "incidents": [
+      "INC0010326",
+      "INC0016843",
+      "INC0028055",
+      "INC0029409",
+      "INC0036086",
+      "INC0036905",
+      "INC0037042",
+      "INC0037512",
+      "INC0038944"
+     ],
+     "citations": [
+      "INC0036086",
+      "INC0036905",
+      "INC0037042",
+      "INC0037512",
+      "INC0038944",
+      "PRB0040006"
+     ]
+    }
+   ],
+   "upcoming_changes": [
+    {
+     "number": "CHG0030845",
+     "short_description": "Store 34512: PIN pad refresh - contactless upgrade",
+     "type": "Standard",
+     "category": "Hardware",
+     "scope": "Single store",
+     "ci_class": "PIN Pad",
+     "version_from": null,
+     "version_to": null,
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "Field Services - Dispatch",
+     "planned_start": "2026-11-09T13:00:00",
+     "planned_end": "2026-11-09T17:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 1,
+     "enterprise": false
+    },
+    {
+     "number": "CHG0030840",
+     "short_description": "Price book service deployment 2026.26",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all stores)",
+     "ci_class": "Pricing Service",
+     "version_from": null,
+     "version_to": null,
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "Production Support - Store Systems",
+     "planned_start": "2026-11-05T09:00:00",
+     "planned_end": "2026-11-05T11:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 0,
+     "enterprise": true
+    },
+    {
+     "number": "CHG0030846",
+     "short_description": "7NOW platform release v4.53 (order routing / catalog services)",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all 7NOW stores)",
+     "ci_class": "7NOW Platform",
+     "version_from": "v4.52",
+     "version_to": "v4.53",
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "7NOW Digital Support",
+     "planned_start": "2026-11-10T15:00:00",
+     "planned_end": "2026-11-10T17:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 0,
+     "enterprise": true
+    }
+   ],
+   "recent_changes": [
+    {
+     "number": "CHG0030836",
+     "short_description": "7NOW platform release v4.52 (order routing / catalog services)",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all 7NOW stores)",
+     "ci_class": "7NOW Platform",
+     "version_from": "v4.51",
+     "version_to": "v4.52",
+     "risk": "Low",
+     "state": "Review",
+     "assignment_group": "7NOW Digital Support",
+     "planned_start": "2026-11-03T15:00:00",
+     "planned_end": "2026-11-03T17:00:00",
+     "actual_start": "2026-11-03T15:09:44",
+     "actual_end": "2026-11-03T16:23:16",
+     "close_code": "Successful",
+     "close_notes": "Deployed; synthetic order tests passed.",
+     "stores_affected": 0,
+     "enterprise": true
+    }
+   ],
+   "lost_sales_365d_usd": 108379.66,
+   "open_impact_usd": 8441.4,
+   "open_impact_per_hour_usd": 1641.84,
+   "citations": [
+    "INC0039096",
+    "INC0039137",
+    "INC0038944",
+    "INC0036086",
+    "INC0036905",
+    "INC0037042",
+    "INC0037512",
+    "PRB0040006",
+    "CHG0030845",
+    "CHG0030840",
+    "CHG0030846",
+    "CHG0030836"
+   ]
+  },
+  {
+   "store_id": 34512,
+   "store": {
+    "store_id": 34512,
+    "store_name": "7-Eleven #34512",
+    "banner": "7-Eleven",
+    "store_format": "Fuel Plus",
+    "ownership": "Franchise",
+    "operating_status": "Open",
+    "address_line1": "1215 Industrial Blvd",
+    "city": "Dallas",
+    "state": "TX",
+    "zip_code": "75217",
+    "latitude": 32.64756,
+    "longitude": -96.8809,
+    "timezone": "America/Chicago",
+    "utc_offset_std": -6,
+    "region": "Texas",
+    "market": "Dallas",
+    "district_id": "D-TX-DAL-02",
+    "district_name": "Dallas District 2",
+    "district_manager": "Samuel Flores",
+    "store_phone": "(555) 451-8647",
+    "store_email": "store34512@example.com",
+    "store_manager": "Grace Smith",
+    "open_date": "1988-05-12",
+    "last_remodel_date": null,
+    "is_24_hours": true,
+    "store_hours": "24/7",
+    "sqft": 3976,
+    "volume_tier": "A",
+    "num_pos_lanes": 4,
+    "pos_platform": "RIS 2.0",
+    "has_self_checkout_kiosk": true,
+    "num_self_checkout_kiosks": 1,
+    "has_mobile_checkout": true,
+    "has_7now": true,
+    "has_7md": true,
+    "has_dex": true,
+    "has_fuel_station": true,
+    "fuel_brand": "Mobil",
+    "fuel_types": "Regular|Mid-Grade|Premium|Diesel",
+    "num_fuel_dispensers": 8,
+    "has_pay_at_pump": true,
+    "has_ev_charging": true,
+    "num_ev_chargers": 6,
+    "has_car_wash": false,
+    "has_hot_foods": true,
+    "has_laredo_taco": false,
+    "has_slurpee": true,
+    "has_atm": true,
+    "has_lottery": true,
+    "has_beer_wine": false,
+    "has_package_lockers": false,
+    "pos_software_version": "26.10.0"
+   },
+   "services": [
+    {
+     "key": "has_fuel_station",
+     "label": "Fuel",
+     "detail": "8 pumps"
+    },
+    {
+     "key": "diesel",
+     "label": "Diesel",
+     "detail": null
+    },
+    {
+     "key": "has_7now",
+     "label": "7NOW",
+     "detail": null
+    },
+    {
+     "key": "has_7md",
+     "label": "7MD",
+     "detail": null
+    },
+    {
+     "key": "has_dex",
+     "label": "DEX",
+     "detail": null
+    },
+    {
+     "key": "has_mobile_checkout",
+     "label": "Mobile checkout",
+     "detail": null
+    },
+    {
+     "key": "has_self_checkout_kiosk",
+     "label": "Self-checkout",
+     "detail": "1 kiosks"
+    },
+    {
+     "key": "has_ev_charging",
+     "label": "EV",
+     "detail": "6 chargers"
+    },
+    {
+     "key": "has_lottery",
+     "label": "Lottery",
+     "detail": null
+    },
+    {
+     "key": "has_atm",
+     "label": "ATM",
+     "detail": null
+    },
+    {
+     "key": "has_hot_foods",
+     "label": "Hot foods",
+     "detail": null
+    }
+   ],
+   "network": {
+    "store_id": 34512,
+    "primary_isp": "Spectrum Business",
+    "primary_circuit_id": "\u2022\u2022\u2022\u2022 (restricted)",
+    "circuit_type": "Broadband Cable",
+    "bandwidth_mbps": 500,
+    "backup_type": "LTE",
+    "backup_carrier": "T-Mobile",
+    "lte_modem_model": "Cradlepoint W1850",
+    "sdwan_router_model": "Cisco Meraki MX68",
+    "router_firmware": "MX 19.1.4",
+    "switch_model": "Cisco Meraki MS130-24P",
+    "wifi_ap_count": 2,
+    "network_subnet": "\u2022\u2022\u2022\u2022 (restricted)",
+    "router_lan_ip": "\u2022\u2022\u2022\u2022 (restricted)",
+    "store_server_ip": "\u2022\u2022\u2022\u2022 (restricted)",
+    "pos_ip_range": "\u2022\u2022\u2022\u2022 (restricted)",
+    "pinpad_ip_range": "\u2022\u2022\u2022\u2022 (restricted)",
+    "fuel_controller_ip": "\u2022\u2022\u2022\u2022 (restricted)",
+    "sevennow_tablet_ip": "\u2022\u2022\u2022\u2022 (restricted)",
+    "wan_ip_mock": "\u2022\u2022\u2022\u2022 (restricted)",
+    "circuit_install_date": "2023-12-07"
+   },
+   "ci_counts": {
+    "Fuel Dispenser": 8,
+    "EV Charger": 6,
+    "POS Terminal": 4,
+    "PIN Pad": 4,
+    "Receipt Printer": 4,
+    "Wireless Access Point": 2,
+    "Handheld Scanner": 2,
+    "Slurpee Machine": 2,
+    "Coffee Brewer": 2,
+    "Router": 1,
+    "Network Switch": 1,
+    "Store Server": 1,
+    "Back Office PC": 1,
+    "DVR/NVR": 1,
+    "Walk-in Cooler Controller": 1,
+    "Self-Checkout Kiosk": 1,
+    "Mobile Checkout Gateway": 1,
+    "Fuel Controller": 1,
+    "Automatic Tank Gauge": 1,
+    "Fuel Price Sign": 1,
+    "7NOW Tablet": 1,
+    "7MD Device": 1,
+    "Lottery Terminal": 1,
+    "ATM": 1
+   },
+   "district": {
+    "id": "D-TX-DAL-02",
+    "name": "Dallas District 2",
+    "manager": "Samuel Flores"
+   },
+   "citations": []
+  },
+  {
+   "number": "INC0039143",
+   "parent": "INC0039143",
+   "events": [
+    {
+     "ts": "2026-11-04T15:52:10",
+     "kind": "child_group",
+     "incident_number": null,
+     "store_id": null,
+     "actor": "multiple",
+     "text": "54 stores opened tickets 09:52\u201310:33 CT",
+     "emphasis": "child",
+     "collapsed": true,
+     "children": [
+      {
+       "number": "INC0039089",
+       "store_id": 36284,
+       "ts": "2026-11-04T15:52:10",
+       "short_description": "Store 36284 primary circuit down - running on LTE backup",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039090",
+       "store_id": 53840,
+       "ts": "2026-11-04T15:52:13",
+       "short_description": "Monitoring alert: store 53840 primary link down (Spectrum Business)",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039091",
+       "store_id": 97549,
+       "ts": "2026-11-04T15:52:18",
+       "short_description": "Monitoring alert: store 97549 primary link down (Spectrum Business)",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039092",
+       "store_id": 83978,
+       "ts": "2026-11-04T15:53:15",
+       "short_description": "Monitoring alert: store 83978 primary link down (Spectrum Business)",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039093",
+       "store_id": 46918,
+       "ts": "2026-11-04T15:53:36",
+       "short_description": "Monitoring alert: store 46918 primary link down (Spectrum Business)",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039094",
+       "store_id": 34237,
+       "ts": "2026-11-04T15:54:37",
+       "short_description": "Store 34237 primary circuit down - running on LTE backup",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039095",
+       "store_id": 70510,
+       "ts": "2026-11-04T15:54:40",
+       "short_description": "Monitoring alert: store 70510 primary link down (Spectrum Business)",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039096",
+       "store_id": 34512,
+       "ts": "2026-11-04T15:55:03",
+       "short_description": "STORE DOWN: 34512 unreachable, registers in offline mode",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039097",
+       "store_id": 77624,
+       "ts": "2026-11-04T15:55:30",
+       "short_description": "Monitoring alert: store 77624 primary link down (Spectrum Business)",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039098",
+       "store_id": 19358,
+       "ts": "2026-11-04T15:56:38",
+       "short_description": "Monitoring alert: store 19358 primary link down (Spectrum Business)",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039099",
+       "store_id": 97888,
+       "ts": "2026-11-04T15:56:56",
+       "short_description": "Store 97888 primary circuit down - running on LTE backup",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039100",
+       "store_id": 43723,
+       "ts": "2026-11-04T15:57:14",
+       "short_description": "Monitoring alert: store 43723 primary link down (Spectrum Business)",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039101",
+       "store_id": 75749,
+       "ts": "2026-11-04T15:57:55",
+       "short_description": "Store 75749 WAN down, failed over to LTE",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039104",
+       "store_id": 90612,
+       "ts": "2026-11-04T15:59:00",
+       "short_description": "Store 90612 hard down - cannot process cards",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039105",
+       "store_id": 64888,
+       "ts": "2026-11-04T15:59:12",
+       "short_description": "Store 64888 hard down - cannot process cards",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039106",
+       "store_id": 23951,
+       "ts": "2026-11-04T15:59:46",
+       "short_description": "Store 23951 primary circuit down - running on LTE backup",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039107",
+       "store_id": 93818,
+       "ts": "2026-11-04T15:59:47",
+       "short_description": "Store 93818 WAN down, failed over to LTE",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039108",
+       "store_id": 78949,
+       "ts": "2026-11-04T16:01:13",
+       "short_description": "Store 78949 WAN down, failed over to LTE",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039109",
+       "store_id": 80691,
+       "ts": "2026-11-04T16:01:14",
+       "short_description": "Primary internet circuit offline at store 80691",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039110",
+       "store_id": 95793,
+       "ts": "2026-11-04T16:01:16",
+       "short_description": "Primary internet circuit offline at store 95793",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039112",
+       "store_id": 18681,
+       "ts": "2026-11-04T16:03:03",
+       "short_description": "Store 18681 WAN down, failed over to LTE",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039113",
+       "store_id": 29884,
+       "ts": "2026-11-04T16:03:25",
+       "short_description": "Monitoring alert: store 29884 primary link down (Spectrum Business)",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039114",
+       "store_id": 58039,
+       "ts": "2026-11-04T16:04:59",
+       "short_description": "Store 58039 primary circuit down - running on LTE backup",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039115",
+       "store_id": 58648,
+       "ts": "2026-11-04T16:07:38",
+       "short_description": "Store 58648 completely offline - no primary or LTE",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039116",
+       "store_id": 75471,
+       "ts": "2026-11-04T16:08:05",
+       "short_description": "Store 75471 primary circuit down - running on LTE backup",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039117",
+       "store_id": 52965,
+       "ts": "2026-11-04T16:08:10",
+       "short_description": "Store 52965 primary circuit down - running on LTE backup",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039119",
+       "store_id": 89042,
+       "ts": "2026-11-04T16:08:44",
+       "short_description": "Primary internet circuit offline at store 89042",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039121",
+       "store_id": 57166,
+       "ts": "2026-11-04T16:09:36",
+       "short_description": "Store 57166 primary circuit down - running on LTE backup",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039122",
+       "store_id": 88529,
+       "ts": "2026-11-04T16:09:55",
+       "short_description": "Store 88529 primary circuit down - running on LTE backup",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039123",
+       "store_id": 80788,
+       "ts": "2026-11-04T16:10:35",
+       "short_description": "Monitoring alert: store 80788 primary link down (Spectrum Business)",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039124",
+       "store_id": 14905,
+       "ts": "2026-11-04T16:10:45",
+       "short_description": "Primary internet circuit offline at store 14905",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039125",
+       "store_id": 58104,
+       "ts": "2026-11-04T16:11:18",
+       "short_description": "Primary internet circuit offline at store 58104",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039126",
+       "store_id": 55752,
+       "ts": "2026-11-04T16:12:55",
+       "short_description": "STORE DOWN: 55752 unreachable, registers in offline mode",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039127",
+       "store_id": 65242,
+       "ts": "2026-11-04T16:13:17",
+       "short_description": "Primary internet circuit offline at store 65242",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039129",
+       "store_id": 90612,
+       "ts": "2026-11-04T16:14:50",
+       "short_description": "Cards declining 'host unavailable' at store 90612",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039131",
+       "store_id": 91010,
+       "ts": "2026-11-04T16:14:59",
+       "short_description": "Primary internet circuit offline at store 91010",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039132",
+       "store_id": 11101,
+       "ts": "2026-11-04T16:15:11",
+       "short_description": "Store 11101 completely offline - no primary or LTE",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039133",
+       "store_id": 85688,
+       "ts": "2026-11-04T16:15:35",
+       "short_description": "Store 85688 WAN down, failed over to LTE",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039134",
+       "store_id": 79870,
+       "ts": "2026-11-04T16:17:34",
+       "short_description": "Primary internet circuit offline at store 79870",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039135",
+       "store_id": 55530,
+       "ts": "2026-11-04T16:18:12",
+       "short_description": "Primary internet circuit offline at store 55530",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039136",
+       "store_id": 64888,
+       "ts": "2026-11-04T16:18:13",
+       "short_description": "Cards declining 'host unavailable' at store 64888",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039137",
+       "store_id": 34512,
+       "ts": "2026-11-04T16:18:33",
+       "short_description": "Cards declining 'host unavailable' at store 34512",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039138",
+       "store_id": 98772,
+       "ts": "2026-11-04T16:18:48",
+       "short_description": "STORE DOWN: 98772 unreachable, registers in offline mode",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039139",
+       "store_id": 71379,
+       "ts": "2026-11-04T16:19:37",
+       "short_description": "Monitoring alert: store 71379 primary link down (Spectrum Business)",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039140",
+       "store_id": 26720,
+       "ts": "2026-11-04T16:20:24",
+       "short_description": "Store 26720 primary circuit down - running on LTE backup",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039141",
+       "store_id": 98358,
+       "ts": "2026-11-04T16:20:29",
+       "short_description": "Primary internet circuit offline at store 98358",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039142",
+       "store_id": 68809,
+       "ts": "2026-11-04T16:20:40",
+       "short_description": "Monitoring alert: store 68809 primary link down (Spectrum Business)",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039144",
+       "store_id": 64250,
+       "ts": "2026-11-04T16:22:14",
+       "short_description": "Monitoring alert: store 64250 primary link down (Spectrum Business)",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039145",
+       "store_id": 81879,
+       "ts": "2026-11-04T16:22:41",
+       "short_description": "Store 81879 primary circuit down - running on LTE backup",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039146",
+       "store_id": 39340,
+       "ts": "2026-11-04T16:22:47",
+       "short_description": "Store 39340 WAN down, failed over to LTE",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039147",
+       "store_id": 84100,
+       "ts": "2026-11-04T16:22:55",
+       "short_description": "Monitoring alert: store 84100 primary link down (Spectrum Business)",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039148",
+       "store_id": 17910,
+       "ts": "2026-11-04T16:23:37",
+       "short_description": "Store 17910 WAN down, failed over to LTE",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039149",
+       "store_id": 28451,
+       "ts": "2026-11-04T16:23:48",
+       "short_description": "Primary internet circuit offline at store 28451",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039151",
+       "store_id": 84033,
+       "ts": "2026-11-04T16:27:17",
+       "short_description": "Store 84033 WAN down, failed over to LTE",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039152",
+       "store_id": 64172,
+       "ts": "2026-11-04T16:27:37",
+       "short_description": "Store 64172 primary circuit down - running on LTE backup",
+       "state": "In Progress"
+      },
+      {
+       "number": "INC0039153",
+       "store_id": 11278,
+       "ts": "2026-11-04T16:28:23",
+       "short_description": "Monitoring alert: store 11278 primary link down (Spectrum Business)",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039154",
+       "store_id": 46542,
+       "ts": "2026-11-04T16:28:54",
+       "short_description": "Monitoring alert: store 46542 primary link down (Spectrum Business)",
+       "state": "On Hold"
+      },
+      {
+       "number": "INC0039155",
+       "store_id": 55752,
+       "ts": "2026-11-04T16:33:25",
+       "short_description": "Cards declining 'host unavailable' at store 55752",
+       "state": "In Progress"
+      }
+     ]
+    },
+    {
+     "ts": "2026-11-04T16:21:55",
+     "kind": "opened",
+     "actor": "Priya Clark",
+     "text": "Opened: MAJOR: Spectrum Business outage - Dallas, Plano, Fort Worth stores on LTE backup / offline",
+     "incident_number": "INC0039143",
+     "store_id": null,
+     "emphasis": "parent"
+    },
+    {
+     "ts": "2026-11-04T16:21:55",
+     "incident_number": "INC0039143",
+     "store_id": null,
+     "actor": "system",
+     "kind": "system",
+     "text": "Major incident declared. Priority 1 - Critical.",
+     "emphasis": "parent"
+    },
+    {
+     "ts": "2026-11-04T16:21:55",
+     "incident_number": "INC0039143",
+     "store_id": null,
+     "actor": "Priya Clark",
+     "kind": "work_notes",
+     "text": "Major incident declared: Spectrum Business outage impacting Dallas, Plano, Fort Worth stores. Bridge opened; Spectrum Business ticket SPEC-37215515.",
+     "emphasis": "parent"
+    },
+    {
+     "ts": "2026-11-04T16:24:55",
+     "kind": "assigned",
+     "actor": "Priya Clark",
+     "text": "Assigned to Major Incident Management (Priya Clark)",
+     "incident_number": "INC0039143",
+     "store_id": null,
+     "emphasis": "parent"
+    },
+    {
+     "ts": "2026-11-04T16:41:55",
+     "incident_number": "INC0039143",
+     "store_id": null,
+     "actor": "Priya Clark",
+     "kind": "work_notes",
+     "text": "54 stores alerting on primary circuit. LTE failover active at most sites; 7 stores fully offline (cash only).",
+     "emphasis": "parent"
+    },
+    {
+     "ts": "2026-11-04T17:16:55",
+     "incident_number": "INC0039143",
+     "store_id": null,
+     "actor": "Priya Clark",
+     "kind": "work_notes",
+     "text": "Spectrum Business confirms a fiber cut at a DFW aggregation node. Estimated restoration 13:30 local.",
+     "emphasis": "parent"
+    }
+   ],
+   "summary": {
+    "parent": "INC0039143",
+    "parent_title": "MAJOR: Spectrum Business outage - Dallas, Plano, Fort Worth stores on LTE backup / offline",
+    "parent_state": "In Progress",
+    "first_alert": "2026-11-04T15:52:10",
+    "major_declared": "2026-11-04T16:21:55",
+    "isp_ticket": "SPEC-37215515",
+    "restored_at": null,
+    "duration_h": 2.14,
+    "ongoing": true,
+    "child_count": 58,
+    "stores": 54,
+    "stores_offline": 7,
+    "stores_degraded": 47,
+    "minutes_to_declare": 29.8
+   },
+   "suggested_links": [],
+   "group": "major_incident",
+   "citations": [
+    "INC0039143"
+   ]
+  },
+  {
+   "number": "INC0039143",
+   "major": true,
+   "usd": 10269.25,
+   "usd_so_far": 10269.25,
+   "per_hour_now": 6401.05,
+   "by_stream": {
+    "inside": 3473.38,
+    "fuel": 5709.01,
+    "sevennow": 424.21,
+    "lottery": 650.16,
+    "ev": 12.44
+   },
+   "stores": 54,
+   "as_of": "2026-11-04T18:00:18.825949579",
+   "top_stores": [
+    {
+     "store_id": 34512,
+     "usd": 2653.67,
+     "incident_number": "INC0039096"
+    },
+    {
+     "store_id": 98772,
+     "usd": 2413.33,
+     "incident_number": "INC0039138"
+    },
+    {
+     "store_id": 90612,
+     "usd": 1664.19,
+     "incident_number": "INC0039104"
+    },
+    {
+     "store_id": 58648,
+     "usd": 874.76,
+     "incident_number": "INC0039115"
+    },
+    {
+     "store_id": 11101,
+     "usd": 424.42,
+     "incident_number": "INC0039132"
+    }
+   ],
+   "footnote": "Estimate: hourly sales baseline \u00d7 service loss profile. Gross sales, not margin.",
+   "citations": [
+    "INC0039143",
+    "INC0039096",
+    "INC0039138",
+    "INC0039104",
+    "INC0039115",
+    "INC0039132"
+   ]
+  }
+ ],
+ "recorded_at_mock": "2026-11-04T18:00:19.154781177"
+}

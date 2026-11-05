@@ -1,0 +1,499 @@
+{
+ "question": "Did anything change here recently?",
+ "persona": "engineer",
+ "store_id": 34512,
+ "incident_number": "INC0039137",
+ "recorded_from": "template",
+ "calls": [
+  {
+   "name": "correlate_changes",
+   "args": {
+    "number": "INC0039137"
+   }
+  }
+ ],
+ "answer": {
+  "headline": "No recent change explains this \u2014 store 34512",
+  "status": "info",
+  "bullets": [
+   {
+    "text": "No change in the window shows a fleet signal; change is unlikely to be the cause.",
+    "citations": [
+     "INC0039137"
+    ],
+    "sources": [
+     "correlate_changes"
+    ]
+   },
+   {
+    "text": "Scheduled: CHG0030845 Store 34512: PIN pad refresh - contactless upgrade \u2014 Mon Nov 9, 7:00 AM CT (store visit planned).",
+    "citations": [
+     "CHG0030845"
+    ]
+   },
+   {
+    "text": "Scheduled: CHG0030840 Price book service deployment 2026.26 \u2014 Thu Nov 5, 3:00 AM CT.",
+    "citations": [
+     "CHG0030840"
+    ]
+   },
+   {
+    "text": "Scheduled: CHG0030846 7NOW platform release v4.53 (order routing / catalog services) \u2014 Tue Nov 10, 9:00 AM CT.",
+    "citations": [
+     "CHG0030846"
+    ]
+   }
+  ],
+  "panels": [
+   "changes"
+  ],
+  "confidence": "high",
+  "sections": [],
+  "recommended_actions": [],
+  "followups": [
+   "Is this affecting other stores?",
+   "What fixed this last time?",
+   "How much is this costing us?"
+  ],
+  "impact": null
+ },
+ "tool_results": [
+  {
+   "store_id": 34512,
+   "store_name": "7-Eleven #34512",
+   "city": "Dallas",
+   "state": "TX",
+   "region": "Texas",
+   "market": "Dallas",
+   "store_format": "Fuel Plus",
+   "banner": "7-Eleven",
+   "utc_offset_std": -6,
+   "timezone": "America/Chicago",
+   "as_of": "2026-11-04T18:00:05.497962753",
+   "health_score": 22,
+   "band": "Critical",
+   "score_breakdown": [
+    {
+     "reason": "Open P1: INC0039096",
+     "points": -35,
+     "citation": "INC0039096"
+    },
+    {
+     "reason": "Open P2: INC0039137",
+     "points": -20,
+     "citation": "INC0039137"
+    },
+    {
+     "reason": "Open P4: INC0038944",
+     "points": -3,
+     "citation": "INC0038944"
+    },
+    {
+     "reason": "1 chronic device flag(s)",
+     "points": -10,
+     "citation": null
+    },
+    {
+     "reason": "90-day incident count in the top 10% of Fuel Plus stores",
+     "points": -10,
+     "citation": null
+    }
+   ],
+   "open_incidents": [
+    {
+     "number": "INC0039096",
+     "priority": "1 - Critical",
+     "priority_num": 1,
+     "short_description": "STORE DOWN: 34512 unreachable, registers in offline mode",
+     "state": "In Progress",
+     "on_hold_reason": null,
+     "issue_type": "store_offline",
+     "category": "Network",
+     "cmdb_ci": "S34512-RTR-01",
+     "assignment_group": "Network Operations",
+     "opened_at": "2026-11-04T15:55:03",
+     "age_h": 2.08,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-04T19:55:03",
+      "remaining_h": 1.92
+     },
+     "parent_incident": "INC0039143",
+     "est_impact_usd": null,
+     "per_hour_now_usd": null,
+     "impact_profile": "store_offline",
+     "vendor_ticket": "SPEC-71680009",
+     "caused_by_change": null,
+     "problem_id": "PRB0040005",
+     "restricted": true
+    },
+    {
+     "number": "INC0039137",
+     "priority": "2 - High",
+     "priority_num": 2,
+     "short_description": "Cards declining 'host unavailable' at store 34512",
+     "state": "In Progress",
+     "on_hold_reason": null,
+     "issue_type": "card_declines",
+     "category": "Payments",
+     "cmdb_ci": "S34512-PIN-02",
+     "assignment_group": "Payments Engineering",
+     "opened_at": "2026-11-04T16:18:33",
+     "age_h": 1.69,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-05T00:18:33",
+      "remaining_h": 6.31
+     },
+     "parent_incident": "INC0039143",
+     "est_impact_usd": null,
+     "per_hour_now_usd": null,
+     "impact_profile": "card_payments_down",
+     "vendor_ticket": null,
+     "caused_by_change": null,
+     "problem_id": "PRB0040005",
+     "restricted": true
+    },
+    {
+     "number": "INC0038944",
+     "priority": "4 - Low",
+     "priority_num": 4,
+     "short_description": "Dispenser 3 not taking cards at store 34512",
+     "state": "On Hold",
+     "on_hold_reason": "Awaiting Parts",
+     "issue_type": "fuel_card_reader",
+     "category": "Fuel",
+     "cmdb_ci": "S34512-DISP-03",
+     "assignment_group": "Fuel Systems Support",
+     "opened_at": "2026-11-02T16:00:00",
+     "age_h": 50.0,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-07T16:00:00",
+      "remaining_h": 70.0
+     },
+     "parent_incident": null,
+     "est_impact_usd": null,
+     "per_hour_now_usd": null,
+     "impact_profile": "pumps_partial",
+     "vendor_ticket": "VND-9766900",
+     "caused_by_change": null,
+     "problem_id": "PRB0040006",
+     "restricted": true
+    }
+   ],
+   "counts_30d": 11,
+   "counts_90d": 19,
+   "counts_365d": 46,
+   "fleet_percentile_90d": 99.9,
+   "mttr_90d_hours": 22.56,
+   "fleet_mttr_90d_hours": 9.76,
+   "top_categories_90d": [
+    {
+     "category": "Fuel",
+     "count": 6
+    },
+    {
+     "category": "EV Charging",
+     "count": 2
+    },
+    {
+     "category": "Point of Sale",
+     "count": 2
+    }
+   ],
+   "chronic_flags": [
+    {
+     "store_id": 34512,
+     "city": "Dallas",
+     "state": "TX",
+     "region": "Texas",
+     "unit": "S34512-DISP-03",
+     "ci": "S34512-DISP-03",
+     "ci_class": "Fuel Dispenser",
+     "issue_type": "fuel_card_reader",
+     "count_90d": 5,
+     "count_365d": 9,
+     "p_value": 2.281452293544966e-12,
+     "last_incident": "2026-11-02T16:00:00",
+     "cost_365d_usd": null,
+     "lost_sales_365d_usd": null,
+     "truck_rolls": 6,
+     "recommendation": "Replace the secure card reader (permanent fix) instead of another remote reset.",
+     "problem": "PRB0040006",
+     "incidents": [
+      "INC0010326",
+      "INC0016843",
+      "INC0028055",
+      "INC0029409",
+      "INC0036086",
+      "INC0036905",
+      "INC0037042",
+      "INC0037512",
+      "INC0038944"
+     ],
+     "citations": [
+      "INC0036086",
+      "INC0036905",
+      "INC0037042",
+      "INC0037512",
+      "INC0038944",
+      "PRB0040006"
+     ],
+     "restricted": true
+    }
+   ],
+   "upcoming_changes": [
+    {
+     "number": "CHG0030845",
+     "short_description": "Store 34512: PIN pad refresh - contactless upgrade",
+     "type": "Standard",
+     "category": "Hardware",
+     "scope": "Single store",
+     "ci_class": "PIN Pad",
+     "version_from": null,
+     "version_to": null,
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "Field Services - Dispatch",
+     "planned_start": "2026-11-09T13:00:00",
+     "planned_end": "2026-11-09T17:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 1,
+     "enterprise": false
+    },
+    {
+     "number": "CHG0030840",
+     "short_description": "Price book service deployment 2026.26",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all stores)",
+     "ci_class": "Pricing Service",
+     "version_from": null,
+     "version_to": null,
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "Production Support - Store Systems",
+     "planned_start": "2026-11-05T09:00:00",
+     "planned_end": "2026-11-05T11:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 0,
+     "enterprise": true
+    },
+    {
+     "number": "CHG0030846",
+     "short_description": "7NOW platform release v4.53 (order routing / catalog services)",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all 7NOW stores)",
+     "ci_class": "7NOW Platform",
+     "version_from": "v4.52",
+     "version_to": "v4.53",
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "7NOW Digital Support",
+     "planned_start": "2026-11-10T15:00:00",
+     "planned_end": "2026-11-10T17:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 0,
+     "enterprise": true
+    }
+   ],
+   "recent_changes": [
+    {
+     "number": "CHG0030836",
+     "short_description": "7NOW platform release v4.52 (order routing / catalog services)",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all 7NOW stores)",
+     "ci_class": "7NOW Platform",
+     "version_from": "v4.51",
+     "version_to": "v4.52",
+     "risk": "Low",
+     "state": "Review",
+     "assignment_group": "7NOW Digital Support",
+     "planned_start": "2026-11-03T15:00:00",
+     "planned_end": "2026-11-03T17:00:00",
+     "actual_start": "2026-11-03T15:09:44",
+     "actual_end": "2026-11-03T16:23:16",
+     "close_code": "Successful",
+     "close_notes": "Deployed; synthetic order tests passed.",
+     "stores_affected": 0,
+     "enterprise": true
+    }
+   ],
+   "lost_sales_365d_usd": null,
+   "open_impact_usd": null,
+   "open_impact_per_hour_usd": null,
+   "citations": [
+    "INC0039096",
+    "INC0039137",
+    "INC0038944",
+    "INC0036086",
+    "INC0036905",
+    "INC0037042",
+    "INC0037512",
+    "PRB0040006",
+    "CHG0030845",
+    "CHG0030840",
+    "CHG0030846",
+    "CHG0030836"
+   ],
+   "restricted": true
+  },
+  {
+   "anchor": {
+    "number": "INC0039137",
+    "store_id": 34512,
+    "t": "2026-11-04T16:18:33",
+    "group": "payments"
+   },
+   "lookback_h": 72,
+   "candidates": [
+    {
+     "change": {
+      "number": "CHG0030817",
+      "short_description": "POS (RIS 2.0) release 26.10.0 - Wave 2 deployment",
+      "type": "Normal",
+      "category": "Software",
+      "scope": "Release ring: Wave 2",
+      "ci_class": "POS Terminal",
+      "version_from": "26.9.0",
+      "version_to": "26.10.0",
+      "risk": "Low",
+      "state": "Closed",
+      "assignment_group": "POS Release Management",
+      "planned_start": "2026-10-23T08:00:00",
+      "planned_end": "2026-10-23T12:00:00",
+      "actual_start": "2026-10-23T08:08:06",
+      "actual_end": "2026-10-23T09:47:01",
+      "close_code": "Successful",
+      "close_notes": "Deployed 26.10.0 to 553 stores. Post-implementation checks passed.",
+      "stores_affected": 553,
+      "enterprise": false
+     },
+     "score": 0.15,
+     "time_proximity": 0.0,
+     "hours_before": 296.2,
+     "domain_match": 0.5,
+     "fleet_evidence": 0.0,
+     "evidence_text": "No elevated payments ticket rate in changed vs not-yet-changed stores in the 5 days after deployment (risk ratio 1.5\u00d7, 95% CI 0.7\u20133.2\u00d7).",
+     "evidence": {
+      "kind": "staggered",
+      "rr": 1.5,
+      "rr_ci": [
+       0.69,
+       3.23
+      ],
+      "did": 0.105,
+      "treated": 553,
+      "control": 709,
+      "treated_incidents": 14,
+      "control_incidents": 12,
+      "treated_pre": 15,
+      "control_pre": 17,
+      "treated_rate": 0.506,
+      "control_rate": 0.339,
+      "fleet_evidence": 0.0,
+      "window_days": 5
+     },
+     "rr": 1.5,
+     "rr_ci": [
+      0.69,
+      3.23
+     ],
+     "did": 0.105,
+     "z": null,
+     "affected_stores_in_change": 553,
+     "incidents_linked": 0,
+     "candidate_type": "store"
+    }
+   ],
+   "upcoming": [
+    {
+     "number": "CHG0030840",
+     "short_description": "Price book service deployment 2026.26",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all stores)",
+     "ci_class": "Pricing Service",
+     "version_from": null,
+     "version_to": null,
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "Production Support - Store Systems",
+     "planned_start": "2026-11-05T09:00:00",
+     "planned_end": "2026-11-05T11:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 0,
+     "enterprise": true
+    },
+    {
+     "number": "CHG0030845",
+     "short_description": "Store 34512: PIN pad refresh - contactless upgrade",
+     "type": "Standard",
+     "category": "Hardware",
+     "scope": "Single store",
+     "ci_class": "PIN Pad",
+     "version_from": null,
+     "version_to": null,
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "Field Services - Dispatch",
+     "planned_start": "2026-11-09T13:00:00",
+     "planned_end": "2026-11-09T17:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 1,
+     "enterprise": false
+    },
+    {
+     "number": "CHG0030846",
+     "short_description": "7NOW platform release v4.53 (order routing / catalog services)",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all 7NOW stores)",
+     "ci_class": "7NOW Platform",
+     "version_from": "v4.52",
+     "version_to": "v4.53",
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "7NOW Digital Support",
+     "planned_start": "2026-11-10T15:00:00",
+     "planned_end": "2026-11-10T17:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 0,
+     "enterprise": true
+    }
+   ],
+   "negative_evidence": [
+    "No change in the window shows a fleet signal; change is unlikely to be the cause."
+   ],
+   "citations": [
+    "INC0039137",
+    "CHG0030817",
+    "CHG0030840",
+    "CHG0030845",
+    "CHG0030846"
+   ]
+  }
+ ],
+ "recorded_at_mock": "2026-11-04T18:00:05.571822889"
+}

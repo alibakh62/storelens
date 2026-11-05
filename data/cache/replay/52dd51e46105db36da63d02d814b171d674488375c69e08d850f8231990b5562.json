@@ -1,0 +1,1276 @@
+{
+ "question": "Is this affecting other stores?",
+ "persona": "manager",
+ "store_id": 34512,
+ "incident_number": null,
+ "recorded_from": "template",
+ "calls": [
+  {
+   "name": "detect_blast_radius",
+   "args": {
+    "number": "INC0039096"
+   }
+  },
+  {
+   "name": "estimate_impact",
+   "args": {
+    "number": "INC0039143"
+   }
+  }
+ ],
+ "answer": {
+  "headline": "54 stores affected \u2014 likely common cause: Spectrum Business (lift 2.6\u00d7)",
+  "status": "critical",
+  "bullets": [
+   {
+    "text": "Likely cause: 54 of 54 affected stores (100%) are on Spectrum Business vs 39% of stores in these markets (lift 2.6\u00d7).",
+    "citations": [
+     "INC0039096",
+     "INC0039143"
+    ]
+   },
+   {
+    "text": "Unusual: 54 connectivity tickets in the window vs 2.0 expected for this weekday/hour (Poisson p < 0.01).",
+    "citations": [
+     "INC0039096"
+    ]
+   },
+   {
+    "text": "7 offline, 47 degraded across Dallas, Fort Worth, Plano; max radius 52 km from the centroid.",
+    "citations": [
+     "INC0039143"
+    ]
+   },
+   {
+    "text": "All linked under parent INC0039143 (58 child tickets); 0 unlinked look-alikes to review.",
+    "citations": [
+     "INC0039143"
+    ]
+   },
+   {
+    "text": "$10.3k est. lost sales so far across affected stores ($6,401/hour now).",
+    "citations": [
+     "INC0039143"
+    ]
+   }
+  ],
+  "impact": {
+   "usd_so_far": 10269.86,
+   "per_hour_now": 6401.05,
+   "as_of": "2026-11-04T18:00:19.210974838",
+   "restricted": false,
+   "scope": "major"
+  },
+  "recommended_actions": [
+   {
+    "text": "Notify district managers in Dallas, Fort Worth, Plano: cash-only signage at the 7 offline stores.",
+    "owner": "Regional Ops",
+    "citations": [
+     "INC0039143"
+    ]
+   }
+  ],
+  "panels": [
+   "blast"
+  ],
+  "sections": [],
+  "followups": [
+   "Which of my stores are at SLA risk?",
+   "How much is this costing us?",
+   "Did anything change here recently?"
+  ],
+  "confidence": "high"
+ },
+ "tool_results": [
+  {
+   "store_id": 34512,
+   "store_name": "7-Eleven #34512",
+   "city": "Dallas",
+   "state": "TX",
+   "region": "Texas",
+   "market": "Dallas",
+   "store_format": "Fuel Plus",
+   "banner": "7-Eleven",
+   "utc_offset_std": -6,
+   "timezone": "America/Chicago",
+   "as_of": "2026-11-04T18:00:19.161364576",
+   "health_score": 22,
+   "band": "Critical",
+   "score_breakdown": [
+    {
+     "reason": "Open P1: INC0039096",
+     "points": -35,
+     "citation": "INC0039096"
+    },
+    {
+     "reason": "Open P2: INC0039137",
+     "points": -20,
+     "citation": "INC0039137"
+    },
+    {
+     "reason": "Open P4: INC0038944",
+     "points": -3,
+     "citation": "INC0038944"
+    },
+    {
+     "reason": "1 chronic device flag(s)",
+     "points": -10,
+     "citation": null
+    },
+    {
+     "reason": "90-day incident count in the top 10% of Fuel Plus stores",
+     "points": -10,
+     "citation": null
+    }
+   ],
+   "open_incidents": [
+    {
+     "number": "INC0039096",
+     "priority": "1 - Critical",
+     "priority_num": 1,
+     "short_description": "STORE DOWN: 34512 unreachable, registers in offline mode",
+     "state": "In Progress",
+     "on_hold_reason": null,
+     "issue_type": "store_offline",
+     "category": "Network",
+     "cmdb_ci": "S34512-RTR-01",
+     "assignment_group": "Network Operations",
+     "opened_at": "2026-11-04T15:55:03",
+     "age_h": 2.09,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-04T19:55:03",
+      "remaining_h": 1.91
+     },
+     "parent_incident": "INC0039143",
+     "est_impact_usd": 2653.81,
+     "per_hour_now_usd": 1480.26,
+     "impact_profile": "store_offline",
+     "vendor_ticket": "SPEC-71680009",
+     "caused_by_change": null,
+     "problem_id": "PRB0040005"
+    },
+    {
+     "number": "INC0039137",
+     "priority": "2 - High",
+     "priority_num": 2,
+     "short_description": "Cards declining 'host unavailable' at store 34512",
+     "state": "In Progress",
+     "on_hold_reason": null,
+     "issue_type": "card_declines",
+     "category": "Payments",
+     "cmdb_ci": "S34512-PIN-02",
+     "assignment_group": "Payments Engineering",
+     "opened_at": "2026-11-04T16:18:33",
+     "age_h": 1.7,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-05T00:18:33",
+      "remaining_h": 6.3
+     },
+     "parent_incident": "INC0039143",
+     "est_impact_usd": 2057.71,
+     "per_hour_now_usd": 1400.92,
+     "impact_profile": "card_payments_down",
+     "vendor_ticket": null,
+     "caused_by_change": null,
+     "problem_id": "PRB0040005"
+    },
+    {
+     "number": "INC0038944",
+     "priority": "4 - Low",
+     "priority_num": 4,
+     "short_description": "Dispenser 3 not taking cards at store 34512",
+     "state": "On Hold",
+     "on_hold_reason": "Awaiting Parts",
+     "issue_type": "fuel_card_reader",
+     "category": "Fuel",
+     "cmdb_ci": "S34512-DISP-03",
+     "assignment_group": "Fuel Systems Support",
+     "opened_at": "2026-11-02T16:00:00",
+     "age_h": 50.01,
+     "sla": {
+      "status": "ok",
+      "due": "2026-11-07T16:00:00",
+      "remaining_h": 69.99
+     },
+     "parent_incident": null,
+     "est_impact_usd": 5787.77,
+     "per_hour_now_usd": 161.58,
+     "impact_profile": "pumps_partial",
+     "vendor_ticket": "VND-9766900",
+     "caused_by_change": null,
+     "problem_id": "PRB0040006"
+    }
+   ],
+   "counts_30d": 11,
+   "counts_90d": 19,
+   "counts_365d": 46,
+   "fleet_percentile_90d": 99.9,
+   "mttr_90d_hours": 22.56,
+   "fleet_mttr_90d_hours": 9.76,
+   "top_categories_90d": [
+    {
+     "category": "Fuel",
+     "count": 6
+    },
+    {
+     "category": "EV Charging",
+     "count": 2
+    },
+    {
+     "category": "Point of Sale",
+     "count": 2
+    }
+   ],
+   "chronic_flags": [
+    {
+     "store_id": 34512,
+     "city": "Dallas",
+     "state": "TX",
+     "region": "Texas",
+     "unit": "S34512-DISP-03",
+     "ci": "S34512-DISP-03",
+     "ci_class": "Fuel Dispenser",
+     "issue_type": "fuel_card_reader",
+     "count_90d": 5,
+     "count_365d": 9,
+     "p_value": 2.281452293544966e-12,
+     "last_incident": "2026-11-02T16:00:00",
+     "cost_365d_usd": 43750.83,
+     "lost_sales_365d_usd": 41935.83,
+     "truck_rolls": 6,
+     "recommendation": "Replace the secure card reader (permanent fix) instead of another remote reset.",
+     "problem": "PRB0040006",
+     "incidents": [
+      "INC0010326",
+      "INC0016843",
+      "INC0028055",
+      "INC0029409",
+      "INC0036086",
+      "INC0036905",
+      "INC0037042",
+      "INC0037512",
+      "INC0038944"
+     ],
+     "citations": [
+      "INC0036086",
+      "INC0036905",
+      "INC0037042",
+      "INC0037512",
+      "INC0038944",
+      "PRB0040006"
+     ]
+    }
+   ],
+   "upcoming_changes": [
+    {
+     "number": "CHG0030845",
+     "short_description": "Store 34512: PIN pad refresh - contactless upgrade",
+     "type": "Standard",
+     "category": "Hardware",
+     "scope": "Single store",
+     "ci_class": "PIN Pad",
+     "version_from": null,
+     "version_to": null,
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "Field Services - Dispatch",
+     "planned_start": "2026-11-09T13:00:00",
+     "planned_end": "2026-11-09T17:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 1,
+     "enterprise": false
+    },
+    {
+     "number": "CHG0030840",
+     "short_description": "Price book service deployment 2026.26",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all stores)",
+     "ci_class": "Pricing Service",
+     "version_from": null,
+     "version_to": null,
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "Production Support - Store Systems",
+     "planned_start": "2026-11-05T09:00:00",
+     "planned_end": "2026-11-05T11:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 0,
+     "enterprise": true
+    },
+    {
+     "number": "CHG0030846",
+     "short_description": "7NOW platform release v4.53 (order routing / catalog services)",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all 7NOW stores)",
+     "ci_class": "7NOW Platform",
+     "version_from": "v4.52",
+     "version_to": "v4.53",
+     "risk": "Low",
+     "state": "Scheduled",
+     "assignment_group": "7NOW Digital Support",
+     "planned_start": "2026-11-10T15:00:00",
+     "planned_end": "2026-11-10T17:00:00",
+     "actual_start": null,
+     "actual_end": null,
+     "close_code": null,
+     "close_notes": null,
+     "stores_affected": 0,
+     "enterprise": true
+    }
+   ],
+   "recent_changes": [
+    {
+     "number": "CHG0030836",
+     "short_description": "7NOW platform release v4.52 (order routing / catalog services)",
+     "type": "Normal",
+     "category": "Software",
+     "scope": "Enterprise (all 7NOW stores)",
+     "ci_class": "7NOW Platform",
+     "version_from": "v4.51",
+     "version_to": "v4.52",
+     "risk": "Low",
+     "state": "Review",
+     "assignment_group": "7NOW Digital Support",
+     "planned_start": "2026-11-03T15:00:00",
+     "planned_end": "2026-11-03T17:00:00",
+     "actual_start": "2026-11-03T15:09:44",
+     "actual_end": "2026-11-03T16:23:16",
+     "close_code": "Successful",
+     "close_notes": "Deployed; synthetic order tests passed.",
+     "stores_affected": 0,
+     "enterprise": true
+    }
+   ],
+   "lost_sales_365d_usd": 108379.99,
+   "open_impact_usd": 8441.58,
+   "open_impact_per_hour_usd": 1641.84,
+   "citations": [
+    "INC0039096",
+    "INC0039137",
+    "INC0038944",
+    "INC0036086",
+    "INC0036905",
+    "INC0037042",
+    "INC0037512",
+    "PRB0040006",
+    "CHG0030845",
+    "CHG0030840",
+    "CHG0030846",
+    "CHG0030836"
+   ]
+  },
+  {
+   "anchor": {
+    "number": "INC0039096",
+    "store_id": 34512,
+    "t": "2026-11-04T15:55:03",
+    "group": "connectivity",
+    "window": [
+     "2026-11-04T12:55:03",
+     "2026-11-04T16:55:03"
+    ]
+   },
+   "affected_store_count": 54,
+   "total_stores_with_peer_incidents": 54,
+   "offline_count": 7,
+   "degraded_count": 47,
+   "unusual": true,
+   "p_value": 1.0959445635352833e-56,
+   "expected": 2.0,
+   "observed": 54,
+   "likely_common_cause": {
+    "attribute": "primary_isp",
+    "label": "internet provider",
+    "value": "Spectrum Business",
+    "support": 1.0,
+    "base": 0.39,
+    "lift": 2.6,
+    "n_with": 54,
+    "n_affected": 54,
+    "population": "stores in these markets",
+    "network": true,
+    "explanation": "54 of 54 affected stores (100%) are on Spectrum Business vs 39% of stores in these markets (lift 2.6\u00d7)."
+   },
+   "other_candidates": [
+    {
+     "attribute": "circuit_type",
+     "label": "circuit type",
+     "value": "Broadband Cable",
+     "support": 0.85,
+     "base": 0.41,
+     "lift": 2.1,
+     "n_with": 46,
+     "n_affected": 54,
+     "population": "stores in these markets",
+     "network": true,
+     "explanation": "46 of 54 affected stores (85%) are on Broadband Cable vs 41% of stores in these markets (lift 2.1\u00d7)."
+    }
+   ],
+   "markets": [
+    "Dallas",
+    "Fort Worth",
+    "Plano"
+   ],
+   "geo": {
+    "centroid": [
+     32.798448703703706,
+     -96.95436259259259
+    ],
+    "max_radius_km": 51.9,
+    "bbox": [
+     [
+      32.57661,
+      -97.50401
+     ],
+     [
+      33.15594,
+      -96.52411
+     ]
+    ]
+   },
+   "stores": [
+    {
+     "store_id": 11101,
+     "lat": 32.72801,
+     "lon": -97.50343,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "offline",
+     "incident_number": "INC0039132",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 424.45,
+     "dist_km": 58.9
+    },
+    {
+     "store_id": 11278,
+     "lat": 32.59833,
+     "lon": -97.20689,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039153",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 48.44,
+     "dist_km": 31.0
+    },
+    {
+     "store_id": 14905,
+     "lat": 32.84445,
+     "lon": -97.2938,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039124",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 27.12,
+     "dist_km": 44.4
+    },
+    {
+     "store_id": 17910,
+     "lat": 32.98558,
+     "lon": -96.54747,
+     "market": "Plano",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039148",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 15.89,
+     "dist_km": 48.8
+    },
+    {
+     "store_id": 18681,
+     "lat": 32.86519,
+     "lon": -97.42431,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039112",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 26.41,
+     "dist_km": 56.3
+    },
+    {
+     "store_id": 19358,
+     "lat": 32.87927,
+     "lon": -96.74185,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039098",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 32.81,
+     "dist_km": 28.9
+    },
+    {
+     "store_id": 23951,
+     "lat": 32.74105,
+     "lon": -97.28511,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039106",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 63.45,
+     "dist_km": 39.2
+    },
+    {
+     "store_id": 26720,
+     "lat": 32.86798,
+     "lon": -96.70735,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039140",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 34.24,
+     "dist_km": 29.4
+    },
+    {
+     "store_id": 28451,
+     "lat": 32.88857,
+     "lon": -97.22198,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039149",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 48.61,
+     "dist_km": 41.7
+    },
+    {
+     "store_id": 29884,
+     "lat": 32.60231,
+     "lon": -96.80812,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039113",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 36.65,
+     "dist_km": 8.5
+    },
+    {
+     "store_id": 34237,
+     "lat": 32.80185,
+     "lon": -97.32783,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039094",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 59.39,
+     "dist_km": 45.2
+    },
+    {
+     "store_id": 34512,
+     "lat": 32.64756,
+     "lon": -96.8809,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "offline",
+     "incident_number": "INC0039096",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": true,
+     "est_impact_usd": 2653.83,
+     "dist_km": 0.0
+    },
+    {
+     "store_id": 36284,
+     "lat": 32.62439,
+     "lon": -96.967,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039089",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 33.26,
+     "dist_km": 8.5
+    },
+    {
+     "store_id": 39340,
+     "lat": 32.68855,
+     "lon": -96.90252,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039146",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 13.04,
+     "dist_km": 5.0
+    },
+    {
+     "store_id": 43723,
+     "lat": 32.57661,
+     "lon": -97.26231,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039100",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 59.26,
+     "dist_km": 36.6
+    },
+    {
+     "store_id": 46542,
+     "lat": 32.85255,
+     "lon": -96.76081,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039154",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 43.03,
+     "dist_km": 25.4
+    },
+    {
+     "store_id": 46918,
+     "lat": 32.66163,
+     "lon": -96.7192,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039093",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 49.95,
+     "dist_km": 15.2
+    },
+    {
+     "store_id": 52965,
+     "lat": 32.95997,
+     "lon": -96.62271,
+     "market": "Plano",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039117",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 22.81,
+     "dist_km": 42.3
+    },
+    {
+     "store_id": 53840,
+     "lat": 32.89152,
+     "lon": -96.74611,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039090",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 43.63,
+     "dist_km": 29.9
+    },
+    {
+     "store_id": 55530,
+     "lat": 32.86054,
+     "lon": -96.79302,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039135",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 25.02,
+     "dist_km": 25.1
+    },
+    {
+     "store_id": 55752,
+     "lat": 32.67925,
+     "lon": -96.6999,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "offline",
+     "incident_number": "INC0039126",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 334.0,
+     "dist_km": 17.3
+    },
+    {
+     "store_id": 57166,
+     "lat": 32.80071,
+     "lon": -97.4405,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039121",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 35.71,
+     "dist_km": 55.0
+    },
+    {
+     "store_id": 58039,
+     "lat": 32.778,
+     "lon": -96.66248,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039114",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 28.15,
+     "dist_km": 25.1
+    },
+    {
+     "store_id": 58104,
+     "lat": 32.67223,
+     "lon": -96.62286,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039125",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 31.32,
+     "dist_km": 24.3
+    },
+    {
+     "store_id": 58648,
+     "lat": 33.15594,
+     "lon": -96.81259,
+     "market": "Plano",
+     "region": "Texas",
+     "status": "offline",
+     "incident_number": "INC0039115",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 874.82,
+     "dist_km": 56.9
+    },
+    {
+     "store_id": 64172,
+     "lat": 32.78586,
+     "lon": -97.46127,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039152",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 15.98,
+     "dist_km": 56.4
+    },
+    {
+     "store_id": 64250,
+     "lat": 32.96336,
+     "lon": -96.52411,
+     "market": "Plano",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039144",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 41.38,
+     "dist_km": 48.4
+    },
+    {
+     "store_id": 64888,
+     "lat": 32.84683,
+     "lon": -96.90141,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "offline",
+     "incident_number": "INC0039105",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 280.89,
+     "dist_km": 22.2
+    },
+    {
+     "store_id": 65242,
+     "lat": 32.72614,
+     "lon": -97.41254,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039127",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 11.95,
+     "dist_km": 50.5
+    },
+    {
+     "store_id": 68809,
+     "lat": 33.01179,
+     "lon": -96.56408,
+     "market": "Plano",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039142",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 54.88,
+     "dist_km": 50.2
+    },
+    {
+     "store_id": 70510,
+     "lat": 32.90549,
+     "lon": -96.81808,
+     "market": "Plano",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039095",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 57.42,
+     "dist_km": 29.3
+    },
+    {
+     "store_id": 71379,
+     "lat": 32.7378,
+     "lon": -97.43106,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039139",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 34.86,
+     "dist_km": 52.5
+    },
+    {
+     "store_id": 75471,
+     "lat": 32.67228,
+     "lon": -96.65261,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039116",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 14.02,
+     "dist_km": 21.5
+    },
+    {
+     "store_id": 75749,
+     "lat": 32.81356,
+     "lon": -97.3359,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039101",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 55.63,
+     "dist_km": 46.4
+    },
+    {
+     "store_id": 77624,
+     "lat": 32.75282,
+     "lon": -97.50401,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039097",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 42.66,
+     "dist_km": 59.5
+    },
+    {
+     "store_id": 78949,
+     "lat": 32.61638,
+     "lon": -96.71156,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039108",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 48.08,
+     "dist_km": 16.2
+    },
+    {
+     "store_id": 79870,
+     "lat": 32.92927,
+     "lon": -96.91442,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039134",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 17.35,
+     "dist_km": 31.5
+    },
+    {
+     "store_id": 80691,
+     "lat": 32.67206,
+     "lon": -96.8821,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039109",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 21.97,
+     "dist_km": 2.7
+    },
+    {
+     "store_id": 80788,
+     "lat": 32.91555,
+     "lon": -97.44759,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039123",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 38.21,
+     "dist_km": 60.8
+    },
+    {
+     "store_id": 81879,
+     "lat": 32.64797,
+     "lon": -96.95832,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039145",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 18.29,
+     "dist_km": 7.2
+    },
+    {
+     "store_id": 83978,
+     "lat": 32.61946,
+     "lon": -96.79075,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039092",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 21.07,
+     "dist_km": 9.0
+    },
+    {
+     "store_id": 84033,
+     "lat": 32.76714,
+     "lon": -96.97467,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039151",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 22.65,
+     "dist_km": 15.9
+    },
+    {
+     "store_id": 84100,
+     "lat": 32.80158,
+     "lon": -96.6854,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039147",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 44.35,
+     "dist_km": 25.1
+    },
+    {
+     "store_id": 85688,
+     "lat": 32.91683,
+     "lon": -96.54728,
+     "market": "Plano",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039133",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 24.82,
+     "dist_km": 43.2
+    },
+    {
+     "store_id": 88529,
+     "lat": 32.72991,
+     "lon": -96.78454,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039122",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 23.39,
+     "dist_km": 12.9
+    },
+    {
+     "store_id": 89042,
+     "lat": 32.92336,
+     "lon": -97.33664,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039119",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 31.81,
+     "dist_km": 52.5
+    },
+    {
+     "store_id": 90612,
+     "lat": 33.12966,
+     "lon": -96.86817,
+     "market": "Plano",
+     "region": "Texas",
+     "status": "offline",
+     "incident_number": "INC0039104",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 1664.29,
+     "dist_km": 53.6
+    },
+    {
+     "store_id": 91010,
+     "lat": 32.80712,
+     "lon": -96.64318,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039131",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 33.81,
+     "dist_km": 28.4
+    },
+    {
+     "store_id": 93818,
+     "lat": 33.07939,
+     "lon": -96.73542,
+     "market": "Plano",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039107",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 6.87,
+     "dist_km": 49.9
+    },
+    {
+     "store_id": 95793,
+     "lat": 32.87096,
+     "lon": -96.59583,
+     "market": "Plano",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039110",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 50.82,
+     "dist_km": 36.4
+    },
+    {
+     "store_id": 97549,
+     "lat": 32.7163,
+     "lon": -96.67944,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039091",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 56.18,
+     "dist_km": 20.3
+    },
+    {
+     "store_id": 97888,
+     "lat": 32.72746,
+     "lon": -96.7265,
+     "market": "Dallas",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039099",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 42.26,
+     "dist_km": 17.0
+    },
+    {
+     "store_id": 98358,
+     "lat": 32.76422,
+     "lon": -97.39494,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "degraded",
+     "incident_number": "INC0039141",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 15.18,
+     "dist_km": 49.8
+    },
+    {
+     "store_id": 98772,
+     "lat": 32.61364,
+     "lon": -97.29271,
+     "market": "Fort Worth",
+     "region": "Texas",
+     "status": "offline",
+     "incident_number": "INC0039138",
+     "parent_incident": "INC0039143",
+     "in_cluster": true,
+     "anchor": false,
+     "est_impact_usd": 2413.5,
+     "dist_km": 38.7
+    }
+   ],
+   "parent_incidents": [
+    {
+     "number": "INC0039143",
+     "short_description": "MAJOR: Spectrum Business outage - Dallas, Plano, Fort Worth stores on LTE backup / offline",
+     "state": "In Progress",
+     "child_count": 58
+    }
+   ],
+   "suggested_links": [],
+   "suggested_link_count": 0,
+   "est_impact_usd_so_far": 10269.86,
+   "summary": "54 stores with connectivity incidents in the window \u2014 54 tickets vs 2.0 expected (unusual).",
+   "citations": [
+    "INC0039096",
+    "INC0039143",
+    "INC0039132",
+    "INC0039153",
+    "INC0039124",
+    "INC0039148",
+    "INC0039112"
+   ],
+   "out_of_region_store_count": 0
+  },
+  {
+   "number": "INC0039143",
+   "major": true,
+   "usd": 10269.86,
+   "usd_so_far": 10269.86,
+   "per_hour_now": 6401.05,
+   "by_stream": {
+    "inside": 3473.63,
+    "fuel": 5709.36,
+    "sevennow": 424.24,
+    "lottery": 650.19,
+    "ev": 12.44
+   },
+   "stores": 54,
+   "as_of": "2026-11-04T18:00:19.210974838",
+   "top_stores": [
+    {
+     "store_id": 34512,
+     "usd": 2653.83,
+     "incident_number": "INC0039096"
+    },
+    {
+     "store_id": 98772,
+     "usd": 2413.5,
+     "incident_number": "INC0039138"
+    },
+    {
+     "store_id": 90612,
+     "usd": 1664.29,
+     "incident_number": "INC0039104"
+    },
+    {
+     "store_id": 58648,
+     "usd": 874.82,
+     "incident_number": "INC0039115"
+    },
+    {
+     "store_id": 11101,
+     "usd": 424.45,
+     "incident_number": "INC0039132"
+    }
+   ],
+   "footnote": "Estimate: hourly sales baseline \u00d7 service loss profile. Gross sales, not margin.",
+   "citations": [
+    "INC0039143",
+    "INC0039096",
+    "INC0039138",
+    "INC0039104",
+    "INC0039115",
+    "INC0039132"
+   ]
+  }
+ ],
+ "recorded_at_mock": "2026-11-04T18:00:19.516622395"
+}

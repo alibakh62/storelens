@@ -1,0 +1,15 @@
+clock: {mode: running}             # frozen | running
+llm:
+  provider: replay                 # anthropic | azure_openai | openai | bedrock | replay | template
+  fallback_chain: [replay, template]
+  model: ""                        # set to the approved model id
+  temperature: 0
+  timeout_s: 12
+  max_tool_rounds: 6
+  record_on_live: true             # live answers also written to replay cache
+display_tz: America/Chicago
+fictionalize_vendors: false
+blast: {window_before_h: 3, window_after_h: 1, min_support: 0.6, min_lift: 1.5}
+changes: {lookback_h: 72, lookahead_d: 7, post_window_d: 5}
+chronic: {window_d: 90, min_repeats_90d: 3, min_repeats_365d: 5}
+data_dir: data/raw

@@ -1,0 +1,25 @@
+# The scripted demo questions (SPEC §11.2). `make record` pre-records each one for all 3 personas,
+# for every context the UI can send (no incident focus, or each of the demo store's open incidents).
+# Symbolic refs are resolved from scenario_manifest.json at runtime.
+store: demo_store            # -> manifest.demo_store_id
+questions:
+  - id: status
+    text: "What's going on at this store?"
+  - id: blast
+    text: "Is this affecting other stores?"
+  - id: fixes
+    text: "What fixed this last time?"
+    incident: demo_fuel_open   # -> the demo store's open Fuel incident (pump 3)
+  - id: changes
+    text: "Did anything change here recently?"
+  - id: cost
+    text: "How much is the DFW outage costing us?"
+  - id: cost_short
+    text: "How much is this costing us?"
+  - id: stakeholders
+    text: "What should I tell stakeholders?"
+  - id: sla
+    text: "Which of my stores are at SLA risk?"
+  - id: handoff
+    text: "Shift handoff for Texas"
+    store: null
