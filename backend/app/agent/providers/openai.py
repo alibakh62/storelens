@@ -94,7 +94,7 @@ class OpenAIProvider:
         tl = [{"type": "function", "function": {"name": t["name"], "description": t["description"],
                                                 "parameters": t["parameters"]}} for t in tools]
         try:
-            resp = self._create(model=self.model, messages=_convert(messages), tools=tl,
+            resp = self._create(model=self.model, messages=_convert(messages), tools=tl, tool_choice="auto",
                                                        temperature=temperature, timeout=timeout_s)
         except Exception as e:  # noqa: BLE001
             yield {"type": "error", "error": f"{type(e).__name__}: {e}"}
