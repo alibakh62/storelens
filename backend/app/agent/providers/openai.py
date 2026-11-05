@@ -94,7 +94,8 @@ class OpenAIProvider:
                 return self.client.chat.completions.create(**kw)
             except Exception as e:  # noqa: BLE001
                 msg = str(e).lower()
-                if "reasoning_effort" in msg and self._reasoning != "none":
+                if "reasoning_effort" in msg and self._reasoning != "none" and "/v1/responses" not in msg \
+                        and "does not support 'none'" not in msg:
                     self._reasoning = "none"
                     continue
                 if "temperature" in msg and "temperature" in kw and not self._no_temperature:
@@ -103,13 +104,29 @@ class OpenAIProvider:
                 raise
         return self.client.chat.completions.create(**kw)
 
+    _api: str | None = None   # "chat" | "responses"; from llm.api, or switched to "responses" by gateway errors
+
     def chat(self, messages, tools, *, temperature=0, timeout_s=12, stream=False):
+        if self._api is None:
+            from ...config import app_config
+            self._api = app_config().get("llm", {}).get("api") or "chat"
+        if self._api == "responses":
+            yield from self._chat_responses(messages, tools, temperature, timeout_s)
+            return
         tl = [{"type": "function", "function": {"name": t["name"], "description": t["description"],
                                                 "parameters": t["parameters"]}} for t in tools]
         try:
             resp = self._create(model=self.model, messages=_convert(messages), tools=tl, tool_choice="auto",
-                                                       temperature=temperature, timeout=timeout_s)
+                                temperature=temperature, timeout=timeout_s)
         except Exception as e:  # noqa: BLE001
+            m = str(e).lower()
+            # e.g. "Function tools with reasoning_effort are not supported ... use /v1/responses", or the model
+            # refusing reasoning_effort='none': this model can only use tools through the Responses API.
+            if "/v1/responses" in m or ("reasoning_effort" in m and "'none'" in m):
+                self._api = "responses"
+                self._reasoning = ""
+                yield from self._chat_responses(messages, tools, temperature, timeout_s)
+                return
             yield {"type": "error", "error": f"{type(e).__name__}: {e}"}
             return
         msg = resp.choices[0].message
@@ -123,6 +140,62 @@ class OpenAIProvider:
             yield {"type": "tool_call", "id": tc.id, "name": tc.function.name, "args": args}
         u = resp.usage
         yield {"type": "done", "usage": {"in": getattr(u, "prompt_tokens", 0), "out": getattr(u, "completion_tokens", 0)}}
+
+    # ------------------------------------------------------------ Responses API (/v1/responses)
+    def _chat_responses(self, messages, tools, temperature, timeout_s):
+        instructions = "\n\n".join(m["content"] for m in messages if m["role"] == "system")
+        items = []
+        for m in messages:
+            if m["role"] in ("user",):
+                items.append({"role": "user", "content": m["content"]})
+            elif m["role"] == "assistant":
+                if m.get("content"):
+                    items.append({"role": "assistant", "content": m["content"]})
+                for tc in m.get("tool_calls", []):
+                    items.append({"type": "function_call", "call_id": tc["id"], "name": tc["name"],
+                                  "arguments": json.dumps(tc["args"])})
+            elif m["role"] == "tool":
+                items.append({"type": "function_call_output", "call_id": m["tool_call_id"], "output": m["content"]})
+        tl = [{"type": "function", "name": t["name"], "description": t["description"], "parameters": t["parameters"]}
+              for t in tools]
+        kw = dict(model=self.model, instructions=instructions or None, input=items, tools=tl, tool_choice="auto",
+                  timeout=timeout_s, store=False)
+        from ...config import app_config
+        eff = app_config().get("llm", {}).get("reasoning_effort")
+        if eff and eff != "none":
+            kw["reasoning"] = {"effort": eff}
+        if not self._no_temperature:
+            kw["temperature"] = temperature
+        resp = None
+        for _ in range(3):
+            try:
+                resp = self.client.responses.create(**kw)
+                break
+            except Exception as e:  # noqa: BLE001
+                m = str(e).lower()
+                if "temperature" in m and "temperature" in kw:
+                    self._no_temperature = True
+                    kw.pop("temperature")
+                    continue
+                if "store" in m and "store" in kw:
+                    kw.pop("store")
+                    continue
+                yield {"type": "error", "error": f"{type(e).__name__} (responses API): {e}"}
+                return
+        for it in resp.output or []:
+            t = getattr(it, "type", None)
+            if t == "message":
+                txt = "".join(getattr(c, "text", "") or "" for c in (it.content or []))
+                if txt:
+                    yield {"type": "text_delta", "text": txt}
+            elif t == "function_call":
+                try:
+                    args = json.loads(it.arguments or "{}")
+                except json.JSONDecodeError:
+                    args = {}
+                yield {"type": "tool_call", "id": it.call_id, "name": it.name, "args": args}
+        u = getattr(resp, "usage", None)
+        yield {"type": "done", "usage": {"in": getattr(u, "input_tokens", 0) or 0, "out": getattr(u, "output_tokens", 0) or 0}}
 
     def complete(self, system: str, user: str, timeout_s: float = 12) -> str:
         resp = self._create(model=self.model, temperature=0, timeout=timeout_s,

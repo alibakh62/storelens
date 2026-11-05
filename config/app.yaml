@@ -4,7 +4,8 @@ llm:
   fallback_chain: [replay, template]
   model: "7ai-azure-foundry-gpt-6.1-sol"                        # set to the approved model id (gateway: leave "" to use $GATEWAY_MODEL)
   temperature: 0
-  reasoning_effort: ""             # e.g. "none" for gpt-6.1-sol (tools need it); "" = auto-detect from gateway errors
+  api: ""                          # chat | responses; "" = chat, auto-switching to /v1/responses when the gateway requires it
+  reasoning_effort: ""             # "" = model default; low | medium | high (Responses API) — "none" only where the model accepts it
   timeout_s: 12
   max_tool_rounds: 6
   record_on_live: true             # live answers also written to replay cache

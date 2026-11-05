@@ -13,25 +13,19 @@
   }
  ],
  "answer": {
-  "headline": "54 stores affected by the Spectrum Business outage",
+  "headline": "54 stores affected",
   "status": "critical",
+  "confidence": "high",
+  "panels": [
+   "blast"
+  ],
   "bullets": [
    {
     "text": "54 of 54 affected stores are on Spectrum Business (lift 2.6\u00d7).",
     "citations": [
      "INC0039143"
     ]
-   },
-   {
-    "text": "Invented 999 stores elsewhere.",
-    "citations": [
-     "INC0039143"
-    ]
    }
-  ],
-  "confidence": "high",
-  "panels": [
-   "blast"
   ],
   "sections": [],
   "recommended_actions": [],
