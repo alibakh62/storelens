@@ -76,19 +76,32 @@ class OpenAIProvider:
         self.model = model or os.getenv("AZURE_OPENAI_DEPLOYMENT", "gpt-4o")
 
     _no_temperature = False
+    _reasoning: str | None = None   # e.g. "none"; from llm.reasoning_effort, or learned from a gateway error
 
     def _create(self, **kw):
-        """Some newer models reject a non-default temperature: retry once without it and remember."""
-        if self._no_temperature:
-            kw.pop("temperature", None)
-        try:
-            return self.client.chat.completions.create(**kw)
-        except Exception as e:  # noqa: BLE001
-            if "temperature" in str(e).lower() and "temperature" in kw:
-                self._no_temperature = True
-                kw.pop("temperature")
+        """Adapt to model quirks, retrying once per quirk and remembering it:
+        - models that only accept the default temperature;
+        - reasoning models that only allow function tools with reasoning_effort='none'."""
+        if self._reasoning is None:
+            from ...config import app_config
+            self._reasoning = app_config().get("llm", {}).get("reasoning_effort") or ""
+        for _ in range(3):
+            if self._no_temperature:
+                kw.pop("temperature", None)
+            if self._reasoning:
+                kw["extra_body"] = {**kw.get("extra_body", {}), "reasoning_effort": self._reasoning}
+            try:
                 return self.client.chat.completions.create(**kw)
-            raise
+            except Exception as e:  # noqa: BLE001
+                msg = str(e).lower()
+                if "reasoning_effort" in msg and self._reasoning != "none":
+                    self._reasoning = "none"
+                    continue
+                if "temperature" in msg and "temperature" in kw and not self._no_temperature:
+                    self._no_temperature = True
+                    continue
+                raise
+        return self.client.chat.completions.create(**kw)
 
     def chat(self, messages, tools, *, temperature=0, timeout_s=12, stream=False):
         tl = [{"type": "function", "function": {"name": t["name"], "description": t["description"],
