@@ -17,6 +17,18 @@ from server import ROOT, server  # noqa: E402
 OUT = ROOT / "demo" / "out"
 
 
+def ffmpeg_exe() -> str:
+    """System ffmpeg if installed, else the static build bundled with the imageio-ffmpeg package (dev extra)."""
+    exe = shutil.which("ffmpeg")
+    if exe:
+        return exe
+    try:
+        import imageio_ffmpeg
+        return imageio_ffmpeg.get_ffmpeg_exe()
+    except Exception:  # noqa: BLE001
+        raise SystemExit("ffmpeg not found. Run:  uv sync --extra dev --extra llm   (or: brew install ffmpeg)")
+
+
 def main():
     """Frames come from the Chrome DevTools screencast (no Playwright ffmpeg needed); system ffmpeg encodes them."""
     import base64
@@ -54,7 +66,7 @@ def main():
             fh.write(f"file '{f.name}'\nduration {max(t1 - t0, 0.001):.3f}\n")
         fh.write(f"file '{frames[-1][1].name}'\n")
     mp4 = OUT / "storelens_demo.mp4"
-    subprocess.run(["ffmpeg", "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst),
+    subprocess.run([ffmpeg_exe(), "-y", "-loglevel", "error", "-f", "concat", "-safe", "0", "-i", str(lst),
                     "-vf", "scale=1920:1080:flags=lanczos,fps=30", "-c:v", "libx264", "-preset", "veryfast",
                     "-pix_fmt", "yuv420p", "-movflags", "+faststart", str(mp4)], check=True, cwd=tmp)
     shutil.rmtree(tmp, ignore_errors=True)
