@@ -9,3 +9,4 @@ __pycache__/
 .pytest_cache/
 demo/out/video_tmp/
 .env
+eval/out/

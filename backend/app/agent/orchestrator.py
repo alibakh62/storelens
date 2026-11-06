@@ -215,6 +215,7 @@ class Turn:
         if answer is None:
             answer, rep = yield from self._template()
             mode_used = "template"
+        answer = _with_standard_followups(answer, self.scope.persona, self.q)
         yield from _stream_answer(answer)
         yield _ev("answer", dict(answer=answer, validation=rep, mode=mode_used))
         if (self.record or (mode_used not in ("replay", "template", "scope")
@@ -330,6 +331,15 @@ class Turn:
         self.raw_answer = raw
         ans, rep = validate(raw, self.tool_results, self.scope, tools_called=set(self.results_by_name))
         return ans, rep
+
+
+def _with_standard_followups(a: dict, persona: str, question: str) -> dict:
+    """The persona's standard follow-up chips always come first (the demo script relies on them, whatever the model
+    or the replay cache suggested); the model's own follow-ups fill the remaining slots."""
+    asked = question.strip().lower()
+    std = [f for f in templates.FOLLOWUPS.get(persona, []) if f.lower() != asked][:3]
+    rest = [f for f in a.get("followups", []) if f.lower() not in {x.lower() for x in std} and f.lower() != asked]
+    return {**a, "followups": (std + rest)[:4]}
 
 
 class _Fallback(Exception):

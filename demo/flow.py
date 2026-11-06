@@ -61,7 +61,10 @@ class Flow:
         self.answer_done()
 
     def click_text(self, sel, text):
-        self.p.locator(sel, has_text=text).first.click()
+        loc = self.p.locator(sel, has_text=text)
+        if loc.count() == 0 and sel != '[data-testid=suggestion]':
+            loc = self.p.locator('[data-testid=suggestion]', has_text=text)
+        loc.first.click()
 
     def snap(self, key):
         if self.shot:
