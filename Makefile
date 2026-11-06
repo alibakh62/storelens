@@ -4,11 +4,15 @@ UVICORN ?= uv run uvicorn
 PORT    ?= 8000
 export STORELENS_PACING ?= 1
 
-.PHONY: llm-check setup data dev backend frontend test eval record demo preflight screenshots backup-video deck demo-script all-demo-assets build stop
+.PHONY: llm-check browsers setup data dev backend frontend test eval record demo preflight screenshots backup-video deck demo-script all-demo-assets build stop
 
-setup:            ## install Python + JS deps
+setup:            ## install Python + JS deps + the Chromium browser used by preflight/screenshots/video
 	uv sync --extra dev --extra llm
 	cd frontend && npm install --no-audit --no-fund
+	$(MAKE) browsers
+
+browsers:         ## Chromium for Playwright (one-time)
+	uv run playwright install chromium
 
 data:             ## generate the mock data (seed 42, 1,500 stores)
 	$(PY) scripts/generate_store_ops_mock_data.py --out data/raw --seed 42 --stores 1500

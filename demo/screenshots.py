@@ -6,7 +6,10 @@ import shutil
 import sys
 from pathlib import Path
 
-from playwright.sync_api import sync_playwright
+try:
+    from playwright.sync_api import sync_playwright
+except ImportError:
+    raise SystemExit("Playwright is not installed. Run:  uv sync --extra dev --extra llm && uv run playwright install chromium")
 
 sys.path.insert(0, str(Path(__file__).parent))
 from flow import Flow  # noqa: E402
@@ -20,7 +23,7 @@ ASSETS = ROOT / "deck" / "assets"
 def main():
     OUT.mkdir(parents=True, exist_ok=True)
     ASSETS.mkdir(parents=True, exist_ok=True)
-    with server(port=8765, pacing="0.3") as base, sync_playwright() as p:
+    with server(port=8765, provider="replay", pacing="0.3") as base, sync_playwright() as p:
         b = launch(p)
         ctx = b.new_context(viewport={"width": 1536, "height": 864}, device_scale_factor=2)
         pg = ctx.new_page()

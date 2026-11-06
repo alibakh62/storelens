@@ -50,7 +50,7 @@ class Flow:
         if self.captions:
             self.p.evaluate(CAPTION_JS, text)
 
-    def answer_done(self, timeout=20000):
+    def answer_done(self, timeout=60000):
         self.p.wait_for_function("""() => { const a = document.querySelectorAll('[data-testid=answer]');
             const t = document.querySelectorAll('[data-turn]'); return t.length && a.length >= t.length; }""", timeout=timeout)
 

@@ -4,7 +4,10 @@ import subprocess
 import sys
 from pathlib import Path
 
-from playwright.sync_api import sync_playwright
+try:
+    from playwright.sync_api import sync_playwright
+except ImportError:
+    raise SystemExit("Playwright is not installed. Run:  uv sync --extra dev --extra llm && uv run playwright install chromium")
 
 sys.path.insert(0, str(Path(__file__).parent))
 from flow import Flow  # noqa: E402
@@ -23,7 +26,7 @@ def main():
     shutil.rmtree(tmp, ignore_errors=True)
     tmp.mkdir()
     frames: list[tuple[float, Path]] = []
-    with server(port=8766, pacing="1") as base, sync_playwright() as p:
+    with server(port=8766, provider="replay", pacing="1") as base, sync_playwright() as p:
         b = launch(p)
         ctx = b.new_context(viewport={"width": 1536, "height": 864})
         pg = ctx.new_page()

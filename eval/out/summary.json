@@ -9,8 +9,8 @@
   "injection_pass": true,
   "bullets_removed": 0,
   "ungrounded_numbers_removed": 0,
-  "p50_latency_ms": 140.5,
-  "p95_latency_ms": 461.1,
+  "p50_latency_ms": 88.6,
+  "p95_latency_ms": 355.5,
   "avg_tokens_in": 0,
   "avg_tokens_out": 0
 }

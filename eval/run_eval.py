@@ -56,6 +56,9 @@ def cited(a):
     return ids
 
 
+LIVE = None
+
+
 def run(mode):
     warm()
     valid = all_ids()
@@ -67,16 +70,16 @@ def run(mode):
         store = resolve(c.get("store")) if c.get("store") else None
         inc = resolve(c.get("incident")) if c.get("incident") else None
         t = time.perf_counter()
-        r = ask(c["question"], scope, store_id=store, incident_number=inc, force_mode=None if mode == "live" else mode)
+        r = ask(c["question"], scope, store_id=store, incident_number=inc, force_mode=LIVE if mode == "live" else mode)
         lat = (time.perf_counter() - t) * 1000
         a, v = r["answer"], r["validation"]
         txt = json.dumps(a)
         ids = cited(a)
-        must = [resolve(x) for x in c.get("must_cite", [])]
-        found = [m for m in must if m in ids or m in txt]
-        facts = [f.format(**{}) if "{" not in f else f for f in c.get("must_contain", [])]
-        facts = [re.sub(r"\{([^}]+)\}", lambda m: str(resolve(m.group(1))), f) for f in facts]
-        fact_hits = [f for f in facts if f.lower() in txt.lower()]
+        # each entry may list alternatives "a|b|c": any one satisfies it (live models phrase things their own way)
+        must = ["|".join(str(resolve(a)) for a in x.split("|")) for x in c.get("must_cite", [])]
+        found = [m for m in must if any(a in ids or a in txt for a in m.split("|"))]
+        facts = [re.sub(r"\{([^}]+)\}", lambda m: str(resolve(m.group(1))), f) for f in c.get("must_contain", [])]
+        fact_hits = [f for f in facts if any(a.lower() in txt.lower() for a in f.split("|"))]
         bad = [p for p in c.get("must_not_contain", []) if re.search(p, txt, re.I)]
         leak = 0
         if not scope.can_view_network and (IPV4.search(txt) or CIRCUIT.search(txt)):
@@ -124,8 +127,13 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--mode", default="template", choices=["template", "live", "replay"])
     m = ap.parse_args().mode
-    if m == "live" and not any(live_provider(n) for n in chain() if n not in ("replay", "template")):
+    from app.config import app_config
+    cfg = app_config().get("llm", {})
+    names = [cfg.get("provider")] + list(cfg.get("fallback_chain", []))
+    LIVE = next((n for n in names if n not in ("replay", "template") and live_provider(n)), None)
+    if m == "live" and LIVE is None:
         print("No live provider available — running template mode.")
         m = "template"
+    globals()["LIVE"] = LIVE
     s = run(m)
     sys.exit(0 if s["rbac_leaks"] == 0 and s["citation_precision"] >= 0.95 else 1)

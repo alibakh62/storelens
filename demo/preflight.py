@@ -57,7 +57,12 @@ check(f"replay cache covers demo questions ({total - miss}/{total})", miss == 0)
 live = [n for n in chain() if n not in ("replay", "template") and live_provider(n)]
 check(f"LLM ping ({live or 'no live provider configured — replay/template only'})", bool(live), warn=True)
 
-from playwright.sync_api import sync_playwright  # noqa: E402
+try:
+    from playwright.sync_api import sync_playwright  # noqa: E402
+except ImportError:
+    check("e2e demo flow: Playwright not installed — run: uv sync --extra dev --extra llm && uv run playwright install chromium", False)
+    print("\nPREFLIGHT RED")
+    sys.exit(1)
 from flow import Flow  # noqa: E402
 from pw import launch  # noqa: E402
 from server import server  # noqa: E402
